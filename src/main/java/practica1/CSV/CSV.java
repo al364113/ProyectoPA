@@ -9,17 +9,29 @@ import java.util.List;
 public class CSV {
     public static String readTable(String nombreFichero) throws IOException {
         BufferedReader br = null;
-        List<String> filas = new ArrayList<String>();
+        List<Double> fila;
+        List<List<Double>> filas = new ArrayList<>();
         Table tabla;
 
         try {
             br = new BufferedReader(new FileReader(nombreFichero));
             String line = br.readLine();
+
+            List<String> cabeceras = new ArrayList<>();
+            for(String cabecera: line.split(" ")){
+                cabeceras.add(cabecera);
+            }
+
             while(line != null){
-                filas.add(line);
+                fila = new ArrayList<>();
+                for(String campo: line.split(" ")){
+                    Double campoDouble = new Double(campo);
+                    fila.add(campoDouble);
+                }
+                filas.add(fila);
                 br.readLine();
             }
-            tabla = new Table(filas);
+            tabla = new Table(cabeceras, filas);
 
 
         }catch (Exception e){
