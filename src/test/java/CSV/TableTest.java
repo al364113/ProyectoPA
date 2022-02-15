@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TableTest {
 
 
-    @Test
+    /*@Test
     @DisplayName("Test de la clase Row")
     void RowTest(){
         List<Double> doubles = new ArrayList<>();
@@ -23,5 +23,5 @@ public class TableTest {
 
         assertEquals(doubles, row.getData());
     }
-
+*/
 }
