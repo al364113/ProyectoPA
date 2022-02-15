@@ -8,14 +8,11 @@ public class Table {
     List<String> headers = new ArrayList<String>();
     List<Row> filas = new ArrayList<Row>();
 
-    public Table(List<List<String>> tabla){
-        ListIterator<List<String>> ite = tabla.listIterator();
-        headers = ite.next();
+    public Table(List<String> headers,List<List<Double>> tabla){
+        this.headers = headers;
+        ListIterator<List<Double>> ite = tabla.listIterator();
         while (ite.hasNext()){
-            ListIterator<String> ite2=ite.next().listIterator();
-            List<Double> aux = new ArrayList<Double>();
-            while (ite2.hasNext()) aux.add(new Double(ite2.next()));
-            filas.add(new Row(aux));
+            filas.add(new Row(ite.next()));
         }
     }
 
