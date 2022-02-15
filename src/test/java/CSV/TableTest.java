@@ -1,0 +1,21 @@
+package CSV;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("Test de la clase Table")
+public class TableTest {
+
+
+    @Test
+    @DisplayName("Test de la clase Row")
+    void RowTest(){
+        List<Double> doubles = new ArrayList<>();
+        doubles.add(2.3); doubles.add(3.4)
+    }
+
+}
