@@ -9,8 +9,8 @@ import java.util.List;
 public class CSV {
     public static Table readTable(String nombreFichero) throws IOException {
         BufferedReader br = null;
-        List<Double> fila;
-        List<List<Double>> filas = new ArrayList<>();
+        List<String> fila;
+        List<List<String>> filas = new ArrayList<>();
         Table tabla = new Table();
 
         try {
@@ -25,8 +25,7 @@ public class CSV {
             while(line != null){
                 fila = new ArrayList<>();
                 for(String campo: line.split(" ")){
-                    Double campoDouble = new Double(campo);
-                    fila.add(campoDouble);
+                    fila.add(campo);
                 }
                 filas.add(fila);
                 br.readLine();
