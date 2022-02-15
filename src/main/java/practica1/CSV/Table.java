@@ -11,9 +11,9 @@ public class Table {
     public Table() {
     }
 
-    public Table(List<String> headers, List<List<Double>> tabla){
-        this.headers = headers;
-        ListIterator<List<Double>> ite = tabla.listIterator();
+    public Table(List<List<String>> tabla){
+        ListIterator<List<String>> ite = tabla.listIterator();
+        headers=ite.next();
         while (ite.hasNext()){
             filas.add(new Row(ite.next()));
         }
