@@ -8,7 +8,10 @@ public class Table {
     List<String> headers = new ArrayList<String>();
     List<Row> filas = new ArrayList<Row>();
 
-    public Table(List<String> headers,List<List<Double>> tabla){
+    public Table() {
+    }
+
+    public Table(List<String> headers, List<List<Double>> tabla){
         this.headers = headers;
         ListIterator<List<Double>> ite = tabla.listIterator();
         while (ite.hasNext()){
