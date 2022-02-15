@@ -1,5 +1,4 @@
 package practica1.CSV;
 
-public class CSV {
-
+public class Table {
 }
