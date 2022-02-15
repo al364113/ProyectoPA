@@ -5,13 +5,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class CSV {
-    public String readTable() throws IOException {
+    public static String readTable(String nombreFichero) throws IOException {
         BufferedReader br = null;
-        String nombreFichero = leeNombreFichero();
         List<String> filas = new ArrayList<String>();
+        Table tabla;
 
         try {
             br = new BufferedReader(new FileReader(nombreFichero));
@@ -20,8 +19,7 @@ public class CSV {
                 filas.add(line);
                 br.readLine();
             }
-            Table tabla = new Table(filas);
-            return tabla;
+            tabla = new Table(filas);
 
 
         }catch (Exception e){
@@ -31,11 +29,7 @@ public class CSV {
                 br.close();
             }
         }
-    }
 
-    private static String leeNombreFichero(){
-        Scanner sc = new Scanner(System.in);
-        String nombre = sc.nextLine();
-        return nombre;
+        return tabla;
     }
 }
