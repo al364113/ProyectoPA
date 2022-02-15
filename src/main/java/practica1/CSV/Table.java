@@ -19,7 +19,7 @@ public class Table {
         }
     }
 
-    public Row getRow(int n_fila){
+    public Row getRowAt(int n_fila){
         return filas.get(n_fila);
     }
 

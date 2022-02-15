@@ -7,11 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSV {
-    public static Table readTable(String nombreFichero) throws IOException {
+    public static Table readTable(String nombreFichero,int tipo) throws IOException {
         BufferedReader br = null;
         List<String> fila;
         List<List<String>> filas = new ArrayList<>();
-        Table tabla = new Table();
+        Table tabla;
+        if (tipo==0) tabla=new Table();
+        else tabla=new TableWithLabels();
 
         try {
             br = new BufferedReader(new FileReader(nombreFichero));

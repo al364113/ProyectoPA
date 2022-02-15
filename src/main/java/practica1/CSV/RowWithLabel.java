@@ -8,8 +8,10 @@ public class RowWithLabel extends Row {
 
     public RowWithLabel(List<String> linea) {
         label= linea.remove(linea.size()-1);
-        super(linea);
+        creaFila(linea);
+    }
 
-
+    public String getLabel(){
+        return label;
     }
 }
