@@ -2,6 +2,8 @@ package CSV;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import practica1.CSV.Row;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +17,11 @@ public class TableTest {
     @DisplayName("Test de la clase Row")
     void RowTest(){
         List<Double> doubles = new ArrayList<>();
-        doubles.add(2.3); doubles.add(3.4)
+        doubles.add(1.2); doubles.add(2.3); doubles.add(3.4);
+
+        Row row = new Row(doubles);
+
+        assertEquals(doubles, row.getData());
     }
 
 }

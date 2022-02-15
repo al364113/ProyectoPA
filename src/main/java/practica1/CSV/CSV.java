@@ -17,11 +17,6 @@ public class CSV {
             br = new BufferedReader(new FileReader(nombreFichero));
             String line = br.readLine();
 
-            List<String> cabeceras = new ArrayList<>();
-            for(String cabecera: line.split(" ")){
-                cabeceras.add(cabecera);
-            }
-
             while(line != null){
                 fila = new ArrayList<>();
                 for(String campo: line.split(" ")){
@@ -30,7 +25,7 @@ public class CSV {
                 filas.add(fila);
                 br.readLine();
             }
-            tabla = new Table(cabeceras, filas);
+            tabla = new Table(filas);
 
 
         }catch (Exception e){
