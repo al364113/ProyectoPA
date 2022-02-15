@@ -14,6 +14,9 @@ public class Row {
         }
     }
 
+    public Row() {
+    }
+
     public List<Double> getData() {
         return data;
     }

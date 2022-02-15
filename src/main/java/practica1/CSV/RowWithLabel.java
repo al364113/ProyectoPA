@@ -7,7 +7,9 @@ public class RowWithLabel extends Row {
     String label;
 
     public RowWithLabel(List<String> linea) {
-        label = linea.get(linea.size()-1);
-        super();
+        label= linea.remove(linea.size()-1);
+        super(linea);
+
+
     }
 }
