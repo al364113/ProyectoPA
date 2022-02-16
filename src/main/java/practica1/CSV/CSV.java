@@ -43,6 +43,7 @@ public class CSV {
         BufferedReader br = null;
         List<String> fila;
         List<List<String>> filas = new ArrayList<>();
+        List<String> etiquetas = new ArrayList<>();
         TableWithLabels tabla = new TableWithLabels();
 
         try {
@@ -54,10 +55,12 @@ public class CSV {
                 for(String campo: line.split(" ")){
                     fila.add(campo);
                 }
+                String etiqueta = fila.remove(-1); //Eliminamos el último elemento de la fila para tenerlo aparte, ya que es la etiqueta.
                 filas.add(fila);
+                etiquetas.add(etiqueta);
                 br.readLine();
             }
-            tabla = new TableWithLabels(filas);
+            tabla = new TableWithLabels(filas, etiquetas);
 
 
         }catch (Exception e){

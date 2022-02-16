@@ -7,19 +7,16 @@ import java.util.ListIterator;
 public class Row {
     List<Double> data;
 
-    public Row(List<String> linea){
-        creaFila(linea);
-    }
-
     public Row() {
     }
 
-    protected void creaFila (List<String> linea){
+    public Row(List<String> linea){
         data = new ArrayList<>();
         for(String elemento: linea){
             data.add(new Double(elemento));
         }
     }
+
 
 
     public List<Double> getData() {

@@ -6,9 +6,9 @@ public class RowWithLabel extends Row {
 
     String label;
 
-    public RowWithLabel(List<String> linea) {
-        label= linea.remove(linea.size()-1);
-        creaFila(linea);
+    public RowWithLabel(List<String> linea, String label) {
+        super(linea);
+        this.label = label;
     }
 
     public String getLabel(){

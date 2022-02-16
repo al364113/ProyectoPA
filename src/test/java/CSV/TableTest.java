@@ -29,9 +29,9 @@ public class TableTest {
     @DisplayName("Test de la clase RowWithLabels")
     void RowWithLabelsTest(){
         List<String> fila = new ArrayList<>();
-        fila.add("1.2"); fila.add("2.3"); fila.add("3.4"); fila.add("etiqueta");
+        fila.add("1.2"); fila.add("2.3"); fila.add("3.4");
 
-        RowWithLabel row = new RowWithLabel(fila);
+        RowWithLabel row = new RowWithLabel(fila, "etiqueta");
 
         assertEquals(fila.toString(), row.getData().toString());
         assertEquals("etiqueta", row.getLabel());
