@@ -19,16 +19,16 @@ public class Table {
         }
     }
 
-    public Row getRowAt(int n_fila){
-        return filas.get(n_fila);
+    public Row getRowAt(int nFila){
+        return filas.get(nFila);
     }
 
-    public List<Double> getColumAt(int n_columna){
+    public List<Double> getColumAt(int nColumna){
         ListIterator<Row> filas_iterator = filas.listIterator();
         List<Double> columna= new ArrayList<Double>();
         while (filas_iterator.hasNext()){
             List<Double> fila = filas_iterator.next().getData();
-            columna.add(fila.get(n_columna));
+            columna.add(fila.get(nColumna));
         }
         return columna;
     }

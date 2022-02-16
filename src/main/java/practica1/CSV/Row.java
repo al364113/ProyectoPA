@@ -15,9 +15,9 @@ public class Row {
     }
 
     protected void creaFila (List<String> linea){
-        ListIterator<String> ite = linea.listIterator();
-        while (ite.hasNext()){
-            data.add(new Double(ite.next()));
+        data = new ArrayList<>();
+        for(String elemento: linea){
+            data.add(new Double(elemento));
         }
     }
 

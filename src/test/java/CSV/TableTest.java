@@ -13,15 +13,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TableTest {
 
 
-    /*@Test
+    @Test
     @DisplayName("Test de la clase Row")
     void RowTest(){
-        List<Double> doubles = new ArrayList<>();
-        doubles.add(1.2); doubles.add(2.3); doubles.add(3.4);
+        List<String> doubles = new ArrayList<>();
+        doubles.add("1.2"); doubles.add("2.3"); doubles.add("3.4");
 
         Row row = new Row(doubles);
 
         assertEquals(doubles, row.getData());
     }
-*/
 }
