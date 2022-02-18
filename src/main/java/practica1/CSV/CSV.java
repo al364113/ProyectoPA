@@ -19,7 +19,7 @@ public class CSV {
 
             while(line != null){
                 fila = new ArrayList<>();
-                for(String campo: line.split(" ")){
+                for(String campo: line.split(",")){
                     fila.add(campo);
                 }
                 filas.add(fila);
@@ -29,7 +29,7 @@ public class CSV {
 
 
         }catch (Exception e){
-            System.out.println("Fallo al leer el fichero.");
+            System.out.println("Fallo al leer el fichero: CSV.readTable()");
         } finally {
             if(br != null){
                 br.close();
@@ -52,7 +52,7 @@ public class CSV {
 
             while(line != null){
                 fila = new ArrayList<>();
-                for(String campo: line.split(" ")){
+                for(String campo: line.split(",")){
                     fila.add(campo);
                 }
                 String etiqueta = fila.remove(-1); //Eliminamos el último elemento de la fila para tenerlo aparte, ya que es la etiqueta.
@@ -64,7 +64,7 @@ public class CSV {
 
 
         }catch (Exception e){
-            System.out.println("Fallo al leer el fichero.");
+            System.out.println("Fallo al leer el fichero: CSV.readTableWithTags()");
         } finally {
             if(br != null){
                 br.close();

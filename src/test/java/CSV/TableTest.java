@@ -2,9 +2,12 @@ package CSV;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import practica1.CSV.CSV;
 import practica1.CSV.Row;
 import practica1.CSV.RowWithLabel;
+import practica1.CSV.Table;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +38,13 @@ public class TableTest {
 
         assertEquals(fila.toString(), row.getData().toString());
         assertEquals("etiqueta", row.getLabel());
+    }
+
+    @Test
+    @DisplayName("Test de la clase Table")
+    void TableTest() throws IOException {
+        Table table = CSV.readTable("./miles_dollars.csv");
+        System.out.println(table.size());
+
     }
 }

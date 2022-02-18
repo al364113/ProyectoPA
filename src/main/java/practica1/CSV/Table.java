@@ -32,4 +32,8 @@ public class Table {
         }
         return columna;
     }
+    public int size(){
+        return filas.size() + 1;
+    }
+
 }
