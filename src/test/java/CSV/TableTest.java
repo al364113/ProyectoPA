@@ -43,7 +43,7 @@ public class TableTest {
     @Test
     @DisplayName("Test de la clase Table")
     void TableTest() throws IOException {
-        Table table = CSV.readTable("src/main/java/resources/miles_dollars.csv");
+        Table table = CSV.readTable("src/main/resources/miles_dollars.csv");
         System.out.println(table.size());
 
     }
