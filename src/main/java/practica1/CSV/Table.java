@@ -38,4 +38,8 @@ public class Table {
 
     public int rowSize() { return headers.size(); }
 
+    public List<String> getHeaders(){
+        return headers;
+    }
+
 }
