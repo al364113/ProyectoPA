@@ -19,11 +19,12 @@ public class CSV {
 
             while(line != null){
                 fila = new ArrayList<>();
+                System.out.println(line);
                 for(String campo: line.split(",")){
                     fila.add(campo);
                 }
                 filas.add(fila);
-                br.readLine();
+                line = br.readLine();
             }
             tabla = new Table(filas);
 
@@ -58,7 +59,7 @@ public class CSV {
                 String etiqueta = fila.remove(-1); //Eliminamos el último elemento de la fila para tenerlo aparte, ya que es la etiqueta.
                 filas.add(fila);
                 etiquetas.add(etiqueta);
-                br.readLine();
+                line = br.readLine();
             }
             tabla = new TableWithLabels(filas, etiquetas);
 
