@@ -19,8 +19,8 @@ public class RegresionLineal {
         List<Double> y = data.getColumAt(1);
 
         for (int i = 0; i < data.size(); i++) {
-            sumaX = x.get(i);
-            sumaY = y.get(i);
+            sumaX += x.get(i);
+            sumaY += y.get(i);
         }
         mediaX = sumaX / data.size();
         mediaY = sumaY / data.size();
