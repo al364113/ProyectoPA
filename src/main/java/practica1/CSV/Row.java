@@ -22,4 +22,9 @@ public class Row {
     public List<Double> getData() {
         return data;
     }
+
+    @Override
+    public String toString(){
+        return data.toString();
+    }
 }

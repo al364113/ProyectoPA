@@ -65,7 +65,7 @@ public class CSV {
 
 
         }catch (Exception e){
-            System.out.println("Fallo al leer el fichero en: CSV.readTableWithTags()");
+            System.out.println("Fallo al leer el fichero en: CSV.readTableWithLabels()");
             System.out.println(e.toString());
         } finally {
             if(br != null){
