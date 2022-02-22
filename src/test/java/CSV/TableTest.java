@@ -43,6 +43,7 @@ public class TableTest {
         Table table = CSV.readTable("src/main/resources/miles_dollars.csv");
         assertEquals(26, table.size());
         assertEquals("[1849.0, 2332.0]", table.getRowAt(4).toString());
+        assertEquals(2, table.rowSize());
     }
 
     @Test

@@ -36,4 +36,6 @@ public class Table {
         return filas.size() + 1;
     }
 
+    public int rowSize() { return headers.size(); }
+
 }
