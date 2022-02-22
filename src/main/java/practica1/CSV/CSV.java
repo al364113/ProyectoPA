@@ -40,7 +40,7 @@ public class CSV {
         return tabla;
     }
 
-    public static Table readTableWithLabels(String nombreFichero) throws IOException {
+    public static TableWithLabels readTableWithLabels(String nombreFichero) throws IOException {
         BufferedReader br = null;
         List<String> fila;
         List<List<String>> filas = new ArrayList<>();

@@ -2,10 +2,7 @@ package CSV;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import practica1.CSV.CSV;
-import practica1.CSV.Row;
-import practica1.CSV.RowWithLabel;
-import practica1.CSV.Table;
+import practica1.CSV.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,7 +41,13 @@ public class TableTest {
     @DisplayName("Test de la clase Table")
     void TableTest() throws IOException {
         Table table = CSV.readTable("src/main/resources/miles_dollars.csv");
-        System.out.println(table.size());
+        assertEquals(26, table.size());
+    }
 
+    @Test
+    @DisplayName("Test de la clase TableWithLabels")
+    void TableWithLabelsTest() throws IOException {
+        TableWithLabels table = CSV.readTableWithLabels("src/main/resources/iris.csv");
+        assertEquals(151, table.size());
     }
 }
