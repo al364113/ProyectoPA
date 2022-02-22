@@ -12,10 +12,9 @@ public class Table {
     }
 
     public Table(List<List<String>> tabla) {
-        ListIterator<List<String>> ite = tabla.listIterator();
-        headers = ite.next();
-        while (ite.hasNext()) {
-            filas.add(new Row(ite.next()));
+        headers = tabla.remove(0);
+        for(List<String> fila: tabla){
+            filas.add(new Row(fila));
         }
     }
 

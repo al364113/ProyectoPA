@@ -2,7 +2,6 @@ package practica1.CSV;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
 public class Row {
     List<Double> data;
