@@ -18,6 +18,6 @@ public class TableWithLabels extends Table {
 
     @Override
     public RowWithLabel getRowAt(int fila){
-        return (RowWithLabel) filas.get(fila); //TODO ¿Cast?
+        return (RowWithLabel) filas.get(fila);
     }
 }
