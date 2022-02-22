@@ -19,7 +19,6 @@ public class CSV {
 
             while(line != null){
                 fila = new ArrayList<>();
-                System.out.println(line);
                 for(String campo: line.split(",")){
                     fila.add(campo);
                 }
