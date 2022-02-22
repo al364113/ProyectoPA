@@ -1,16 +1,15 @@
 package practica1.RegresionLineal;
 
-import practica1.CSV.Row;
 import practica1.CSV.Table;
 
 import java.lang.Math;
 import java.util.List;
 
-public class RegresiónLineal {
+public class RegresionLineal {
     Double alpha;
     Double beta;
 
-    public RegresiónLineal() {
+    public RegresionLineal() {
     }
 
     public void train(Table data) {
@@ -42,9 +41,11 @@ public class RegresiónLineal {
             sumaDenominador += Math.pow(x.get(i) - mediaX, 2);
         }
         alpha = sumaNumerador / sumaDenominador;
+        beta = mediaY - alpha*mediaX;
     }
 
-    public Double estimate(Double sample) {
-        return 0.0;
-    }
+    public Double estimate(Double sample) { return alpha*sample+beta; }
+
+    public Double getAlpha() {return alpha;}
+    public Double getBeta() {return beta;}
 }

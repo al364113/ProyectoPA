@@ -3,6 +3,7 @@ package CSV;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import practica1.CSV.*;
+import practica1.RegresionLineal.RegresionLineal;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class TableTest {
 
     @Test
     @DisplayName("Test de la clase RegresionLineal")
-    void RegresiónLinealTest() throws IOException {
+    void RegresionLinealTest() throws IOException {
         RegresionLineal rl = new RegresionLineal();
         rl.train(CSV.readTable("src/main/resources/miles_dollars.csv"));
         assertEquals(1.255,Math.round(rl.getAlpha()*1000.0)/1000.0);
