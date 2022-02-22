@@ -17,9 +17,9 @@ public class CSV {
             br = new BufferedReader(new FileReader(nombreFichero));
             String line = br.readLine();
 
-            while(line != null){
+            while (line != null) {
                 fila = new ArrayList<>();
-                for(String campo: line.split(",")){
+                for (String campo : line.split(",")) {
                     fila.add(campo);
                 }
                 filas.add(fila);
@@ -28,11 +28,11 @@ public class CSV {
             tabla = new Table(filas);
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Fallo al leer el fichero en: CSV.readTable()");
             System.out.println(e.toString());
         } finally {
-            if(br != null){
+            if (br != null) {
                 br.close();
             }
         }
@@ -51,12 +51,12 @@ public class CSV {
             br = new BufferedReader(new FileReader(nombreFichero));
             String line = br.readLine();
 
-            while(line != null){
+            while (line != null) {
                 fila = new ArrayList<>();
-                for(String campo: line.split(",")){
+                for (String campo : line.split(",")) {
                     fila.add(campo);
                 }
-                String etiqueta = fila.remove(fila.size()-1); //Eliminamos el último elemento de la fila para tenerlo aparte, ya que es la etiqueta.
+                String etiqueta = fila.remove(fila.size() - 1); //Eliminamos el último elemento de la fila para tenerlo aparte, ya que es la etiqueta.
                 filas.add(fila);
                 etiquetas.add(etiqueta);
                 line = br.readLine();
@@ -64,11 +64,11 @@ public class CSV {
             tabla = new TableWithLabels(filas, etiquetas);
 
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Fallo al leer el fichero en: CSV.readTableWithLabels()");
             System.out.println(e.toString());
         } finally {
-            if(br != null){
+            if (br != null) {
                 br.close();
             }
         }

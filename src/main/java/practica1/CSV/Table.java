@@ -11,33 +11,37 @@ public class Table {
     public Table() {
     }
 
-    public Table(List<List<String>> tabla){
-        ListIterator<List<String>> ite = tabla.listIterator();
-        headers=ite.next();
-        while (ite.hasNext()){
-            filas.add(new Row(ite.next()));
+    public Table(List<List<String>> tabla) {
+        headers = tabla.remove(0);
+        for(List<String> fila: tabla){
+            filas.add(new Row(fila));
         }
     }
 
-    public Row getRowAt(int nFila){
+    public Row getRowAt(int nFila) {
         return filas.get(nFila);
     }
 
-    public List<Double> getColumAt(int nColumna){
+    public List<Double> getColumAt(int nColumna) {
         ListIterator<Row> filas_iterator = filas.listIterator();
-        List<Double> columna= new ArrayList<Double>();
-        while (filas_iterator.hasNext()){
+        List<Double> columna = new ArrayList<Double>();
+        while (filas_iterator.hasNext()) {
             List<Double> fila = filas_iterator.next().getData();
             columna.add(fila.get(nColumna));
         }
         return columna;
     }
-    public int size(){
-        return filas.size() ;
+
+    public int size() {
+        return filas.size();
     }
 
-    public int rowSize() { return headers.size(); }
+    public int rowSize() {
+        return headers.size();
+    }
 
-    public List<Row> getRows() { return filas; }
+    public List<Row> getRows() {
+        return filas;
+    }
 
 }
