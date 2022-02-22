@@ -52,5 +52,6 @@ public class TableTest {
         TableWithLabels table = CSV.readTableWithLabels("src/main/resources/iris.csv");
         assertEquals(151, table.size());
         assertEquals("[5.0, 3.6, 1.4, 0.2]", table.getRowAt(4).toString());
+        assertEquals("Iris-setosa", table.getRowAt(4).getLabel().toString());
     }
 }
