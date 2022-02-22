@@ -56,7 +56,7 @@ public class CSV {
                 for(String campo: line.split(",")){
                     fila.add(campo);
                 }
-                String etiqueta = fila.remove(-1); //Eliminamos el último elemento de la fila para tenerlo aparte, ya que es la etiqueta.
+                String etiqueta = fila.remove(fila.size()-1); //Eliminamos el último elemento de la fila para tenerlo aparte, ya que es la etiqueta.
                 filas.add(fila);
                 etiquetas.add(etiqueta);
                 line = br.readLine();

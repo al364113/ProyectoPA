@@ -9,16 +9,9 @@ public class TableWithLabels extends Table {
     }
 
     public TableWithLabels(List<List<String>> tabla, List<String> etiquetas){
-        /*ListIterator<List<String>> ite = tabla.listIterator();
-        headers=ite.next();
-        while (ite.hasNext()){
-            filas.add(new RowWithLabel(ite.next()));
-        }*/
-
         headers = tabla.get(0);
         for(int i = 1; i< tabla.size(); i++){
-            filas.add(new RowWithLabel(tabla.get(1), etiquetas.get(1)));
-
+            filas.add(new RowWithLabel(tabla.get(i), etiquetas.get(i)));
         }
     }
 
