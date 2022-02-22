@@ -16,9 +16,11 @@ public class TableTest {
 
     @Test
     @DisplayName("Test de la clase Row")
-    void RowTest(){
+    void RowTest() {
         List<String> doubles = new ArrayList<>();
-        doubles.add("1.2"); doubles.add("2.3"); doubles.add("3.4");
+        doubles.add("1.2");
+        doubles.add("2.3");
+        doubles.add("3.4");
 
         Row row = new Row(doubles);
 
@@ -27,9 +29,11 @@ public class TableTest {
 
     @Test
     @DisplayName("Test de la clase RowWithLabels")
-    void RowWithLabelsTest(){
+    void RowWithLabelsTest() {
         List<String> fila = new ArrayList<>();
-        fila.add("1.2"); fila.add("2.3"); fila.add("3.4");
+        fila.add("1.2");
+        fila.add("2.3");
+        fila.add("3.4");
 
         RowWithLabel row = new RowWithLabel(fila, "etiqueta");
 

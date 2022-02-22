@@ -5,19 +5,19 @@ import java.util.ListIterator;
 
 public class TableWithLabels extends Table {
 
-    public TableWithLabels(){
+    public TableWithLabels() {
     }
 
-    public TableWithLabels(List<List<String>> tabla, List<String> etiquetas){
+    public TableWithLabels(List<List<String>> tabla, List<String> etiquetas) {
         headers = tabla.get(0);
-        for(int i = 1; i< tabla.size(); i++){
+        for (int i = 1; i < tabla.size(); i++) {
             filas.add(new RowWithLabel(tabla.get(i), etiquetas.get(i)));
         }
     }
 
 
     @Override
-    public RowWithLabel getRowAt(int fila){
+    public RowWithLabel getRowAt(int fila) {
         return (RowWithLabel) filas.get(fila);
     }
 }

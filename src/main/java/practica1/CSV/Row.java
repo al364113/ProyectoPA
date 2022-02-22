@@ -10,13 +10,12 @@ public class Row {
     public Row() {
     }
 
-    public Row(List<String> linea){
+    public Row(List<String> linea) {
         data = new ArrayList<>();
-        for(String elemento: linea){
+        for (String elemento : linea) {
             data.add(new Double(elemento));
         }
     }
-
 
 
     public List<Double> getData() {
@@ -24,7 +23,7 @@ public class Row {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return data.toString();
     }
 
