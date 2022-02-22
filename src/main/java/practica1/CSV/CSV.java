@@ -29,7 +29,8 @@ public class CSV {
 
 
         }catch (Exception e){
-            System.out.println("Fallo al leer el fichero: CSV.readTable()");
+            System.out.println("Fallo al leer el fichero en: CSV.readTable()");
+            System.out.println(e.toString());
         } finally {
             if(br != null){
                 br.close();
@@ -64,7 +65,8 @@ public class CSV {
 
 
         }catch (Exception e){
-            System.out.println("Fallo al leer el fichero: CSV.readTableWithTags()");
+            System.out.println("Fallo al leer el fichero en: CSV.readTableWithTags()");
+            System.out.println(e.toString());
         } finally {
             if(br != null){
                 br.close();
