@@ -2,10 +2,10 @@ package practica1.CSV;
 import java.lang.Math;
 import java.util.List;
 
-public class RegresiónLineal {
+public class RegresionLineal {
     Double alpha,beta;
 
-    public RegresiónLineal(){}
+    public RegresionLineal(){}
 
     public void train(Table data){
         Double x_media,y_media;
@@ -27,8 +27,10 @@ public class RegresiónLineal {
             sum_denominador+=Math.pow(x.get(i)-x_media,2);
         }
         alpha=sum_numerador/sum_denominador;
+        beta=y_media-alpha*x_media;
     }
-    public Double estimate(Double sample){
-        return 0.0;
-    }
+    public Double estimate(Double sample){ return alpha*sample+beta; }
+
+    public Double getAlpha() {return alpha;}
+    public Double getBeta() {return beta;}
 }

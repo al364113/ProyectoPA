@@ -54,4 +54,14 @@ public class TableTest {
         assertEquals("[5.0, 3.6, 1.4, 0.2]", table.getRowAt(4).toString());
         assertEquals("Iris-setosa", table.getRowAt(4).getLabel().toString());
     }
+
+    @Test
+    @DisplayName("Test de la clase RegresionLineal")
+    void RegresiónLinealTest() throws IOException {
+        RegresionLineal rl = new RegresionLineal();
+        rl.train(CSV.readTable("src/main/resources/miles_dollars.csv"));
+        assertEquals(1.255,Math.round(rl.getAlpha()*1000.0)/1000.0);
+        assertEquals(274.85,Math.round(rl.getBeta()*1000.0)/1000.0);
+
+    }
 }
