@@ -33,13 +33,11 @@ public class Table {
         return columna;
     }
     public int size(){
-        return filas.size() + 1;
+        return filas.size() ;
     }
 
     public int rowSize() { return headers.size(); }
 
-    public List<String> getHeaders(){
-        return headers;
-    }
+    public List<Row> getRows() { return filas; }
 
 }

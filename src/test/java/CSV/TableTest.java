@@ -41,20 +41,17 @@ public class TableTest {
     @DisplayName("Test de la clase Table")
     void TableTest() throws IOException {
         Table table = CSV.readTable("src/main/resources/miles_dollars.csv");
-        assertEquals(26, table.size());     //Prueba 1
+        assertEquals(25, table.size());
         assertEquals("[1849.0, 2332.0]", table.getRowAt(4).toString());
-        assertEquals(2, table.rowSize());   //Prueba 2
-        assertEquals("Miles", table.getHeaders().get(0));   //Prueba 3
+        assertEquals(2, table.rowSize());
     }
 
     @Test
     @DisplayName("Test de la clase TableWithLabels")
     void TableWithLabelsTest() throws IOException {
         TableWithLabels table = CSV.readTableWithLabels("src/main/resources/iris.csv");
-        assertEquals(151, table.size());    //Prueba 1
+        assertEquals(150, table.size());
         assertEquals("[5.0, 3.6, 1.4, 0.2]", table.getRowAt(4).toString());
         assertEquals("Iris-setosa", table.getRowAt(4).getLabel().toString());
-        assertEquals(4, table.rowSize());   //Prueba 2
-        assertEquals("petal width", table.getHeaders().get(3));   //Prueba 3
     }
 }
