@@ -30,11 +30,18 @@ public class RegresionLineal {
             sumaDenominador += Math.pow(x.get(i) - mediaX, 2);
         }
         alpha = sumaNumerador / sumaDenominador;
-        beta = mediaY - alpha*mediaX;
+        beta = mediaY - alpha * mediaX;
     }
 
-    public Double estimate(Double sample) { return alpha*sample+beta; }
+    public Double estimate(Double sample) {
+        return alpha * sample + beta;
+    }
 
-    public Double getAlpha() {return alpha;}
-    public Double getBeta() {return beta;}
+    public Double getAlpha() {
+        return alpha;
+    }
+
+    public Double getBeta() {
+        return beta;
+    }
 }

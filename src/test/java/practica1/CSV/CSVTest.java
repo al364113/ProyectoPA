@@ -1,9 +1,7 @@
-package CSV;
+package practica1.CSV;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import practica1.CSV.*;
-import practica1.RegresionLineal.RegresionLineal;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,9 +9,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DisplayName("Test de la clase Table")
-public class TableTest {
-
+@DisplayName("Test de la clase CSV")
+public class CSVTest {
 
     @Test
     @DisplayName("Test de la clase Row")
@@ -58,15 +55,5 @@ public class TableTest {
         assertEquals(150, table.size());
         assertEquals("[5.0, 3.6, 1.4, 0.2]", table.getRowAt(4).toString());
         assertEquals("Iris-setosa", table.getRowAt(4).getLabel().toString());
-    }
-
-    @Test
-    @DisplayName("Test de la clase RegresionLineal")
-    void RegresionLinealTest() throws IOException {
-        RegresionLineal rl = new RegresionLineal();
-        rl.train(CSV.readTable("src/main/resources/miles_dollars.csv"));
-        assertEquals(1.255,Math.round(rl.getAlpha()*1000.0)/1000.0);
-        assertEquals(274.85,Math.round(rl.getBeta()*1000.0)/1000.0);
-
     }
 }
