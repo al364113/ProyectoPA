@@ -14,4 +14,8 @@ public class RowWithLabel extends Row {
     public String getLabel() {
         return label;
     }
+
+    public static RowWithLabel getRowWithLabel(Row r) {
+        return (RowWithLabel) r;
+    }
 }

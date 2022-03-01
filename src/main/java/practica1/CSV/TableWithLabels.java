@@ -19,4 +19,5 @@ public class TableWithLabels extends Table {
     public RowWithLabel getRowAt(int fila) {
         return (RowWithLabel) filas.get(fila);
     }
+
 }
