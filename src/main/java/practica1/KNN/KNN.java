@@ -16,14 +16,16 @@ public class KNN {
     public String estimate (List<Double> sample) {
         String especie = null;
         double estimacion = -1.0, aux;
-        for (Row fila : data.getRows()) {
-            RowWithLabel r = RowWithLabel.getRowWithLabel(fila);
+
+        for (int i =0; i< data.size(); i++){
+            RowWithLabel r = data.getRowAt(i);
             aux = metricaEuclidea(sample,r.getData());
             if (estimacion < 0 || aux < estimacion) {
                 estimacion = aux;
                 especie = r.getLabel();
             }
         }
+
         return especie;
     }
 

@@ -15,7 +15,4 @@ public class RowWithLabel extends Row {
         return label;
     }
 
-    public static RowWithLabel getRowWithLabel(Row r) {
-        return (RowWithLabel) r;
-    }
 }
