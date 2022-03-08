@@ -1,5 +1,6 @@
 package Excepciones;
 
+import CSV.CSV;
 import CSV.Row;
 import CSV.Table;
 import CSV.TableWithLabels;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,8 +31,13 @@ public class ExcepcionesTest {
 
     }
 
-    void ZeroDivisionExceptionTest() {
 
+    @Test
+    @DisplayName("Test de la clase DifferentFieldNumberInRawException")
+    void DifferentFieldNumberInRawExceptionTest() throws IOException {
+
+        assertThrows(DifferentFieldNumberInRawException.class, () -> CSV.readTable("src/main/resources/miles_dollars_fail.csv"));
 
     }
+
 }

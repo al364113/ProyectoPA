@@ -1,6 +1,6 @@
 package CSV;
 
-import Excepciones.DiferentFieldsNumberInRawException;
+import Excepciones.DifferentFieldNumberInRawException;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSV {
-    public static Table readTable(String nombreFichero) throws IOException {
+    public static Table readTable(String nombreFichero) throws IOException, DifferentFieldNumberInRawException {
         BufferedReader br = null;
         List<String> fila;
         List<List<String>> filas = new ArrayList<>();
@@ -18,30 +18,27 @@ public class CSV {
         try {
             br = new BufferedReader(new FileReader(nombreFichero));
             String line = br.readLine();
-            boolean nuevo = true;
-            int cont = 0;
+            boolean nuevaTabla = true;
+            int nCols = 0;
 
             while (line != null) {
                 fila = new ArrayList<>();
                 for (String campo : line.split(",")) {
-                    if (nuevo) {
-                        cont++;
+                    if (nuevaTabla) {
+                        nCols++;
                     }
                     fila.add(campo);
                 }
-                if (fila.size() != cont) {
-                    throw new DiferentFieldsNumberInRawException();
+                if (fila.size() != nCols) {
+                    throw new DifferentFieldNumberInRawException();
                 }
-                nuevo = false;
+                nuevaTabla = false;
                 filas.add(fila);
                 line = br.readLine();
             }
             tabla = new Table(filas);
-
-
-        }catch (DiferentFieldsNumberInRawException e){
-            System.out.println("Fallo al leer el fichero en: CSV.readTable()");
-            System.out.println(e.toString());
+        } catch (DifferentFieldNumberInRawException e) {
+            throw new DifferentFieldNumberInRawException();
         } catch (Exception e) {
             System.out.println("Fallo al leer el fichero en: CSV.readTable()");
             System.out.println(e.toString());
@@ -54,7 +51,7 @@ public class CSV {
         return tabla;
     }
 
-    public static TableWithLabels readTableWithLabels(String nombreFichero) throws IOException {
+    public static TableWithLabels readTableWithLabels(String nombreFichero) throws IOException, DifferentFieldNumberInRawException {
         BufferedReader br = null;
         List<String> fila;
         List<List<String>> filas = new ArrayList<>();
@@ -64,12 +61,21 @@ public class CSV {
         try {
             br = new BufferedReader(new FileReader(nombreFichero));
             String line = br.readLine();
+            boolean nuevaTabla = true;
+            int nCols = 0;
 
             while (line != null) {
                 fila = new ArrayList<>();
                 for (String campo : line.split(",")) {
+                    if (nuevaTabla) {
+                        nCols++;
+                    }
                     fila.add(campo);
                 }
+                if (fila.size() != nCols) {
+                    throw new DifferentFieldNumberInRawException();
+                }
+                nuevaTabla = false;
                 String etiqueta = fila.remove(fila.size() - 1); //Eliminamos el último elemento de la fila para tenerlo aparte, ya que es la etiqueta.
                 filas.add(fila);
                 etiquetas.add(etiqueta);
@@ -78,6 +84,8 @@ public class CSV {
             tabla = new TableWithLabels(filas, etiquetas);
 
 
+        } catch (DifferentFieldNumberInRawException e) {
+            throw new DifferentFieldNumberInRawException();
         } catch (Exception e) {
             System.out.println("Fallo al leer el fichero en: CSV.readTableWithLabels()");
             System.out.println(e.toString());

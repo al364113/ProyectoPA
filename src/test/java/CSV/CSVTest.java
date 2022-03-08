@@ -1,6 +1,7 @@
 package CSV;
 
 import CSV.*;
+import Excepciones.DifferentFieldNumberInRawException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -42,7 +43,7 @@ public class CSVTest {
 
     @Test
     @DisplayName("Test de la clase Table")
-    void TableTest() throws IOException {
+    void TableTest() throws IOException, DifferentFieldNumberInRawException {
         Table table = CSV.readTable("src/main/resources/miles_dollars.csv");
         assertEquals(25, table.size());
         assertEquals("[1849.0, 2332.0]", table.getRowAt(4).toString());
@@ -51,7 +52,7 @@ public class CSVTest {
 
     @Test
     @DisplayName("Test de la clase TableWithLabels")
-    void TableWithLabelsTest() throws IOException {
+    void TableWithLabelsTest() throws IOException, DifferentFieldNumberInRawException {
         TableWithLabels table = CSV.readTableWithLabels("src/main/resources/iris.csv");
         assertEquals(150, table.size());
         assertEquals("[5.0, 3.6, 1.4, 0.2]", table.getRowAt(4).toString());

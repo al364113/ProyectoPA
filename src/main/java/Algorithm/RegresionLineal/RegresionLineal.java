@@ -1,6 +1,5 @@
 package Algorithm.RegresionLineal;
 
-import Excepciones.ZeroDivisionExeption;
 import Algorithm.Algorithm;
 import CSV.Table;
 
@@ -14,7 +13,7 @@ public class RegresionLineal implements Algorithm<Table,Double,Double> {
     }
 
     @Override
-    public void train(Table data) throws ZeroDivisionExeption {
+    public void train(Table data) {
         Double mediaX, mediaY;
         double sumaX = 0.0, sumaY = 0.0, sumaNumerador = 0.0, sumaDenominador = 0.0;
 
@@ -33,7 +32,6 @@ public class RegresionLineal implements Algorithm<Table,Double,Double> {
             sumaNumerador += (x.get(i) - mediaX) * (y.get(i) - mediaY);
             sumaDenominador += Math.pow(x.get(i) - mediaX, 2);
         }
-        if (sumaDenominador==0) throw new ZeroDivisionExeption();
         alpha = sumaNumerador / sumaDenominador;
         beta = mediaY - alpha * mediaX;
     }

@@ -1,6 +1,7 @@
 package KNN;
 
 import Algorithm.KNN.KNN;
+import Excepciones.DifferentFieldNumberInRawException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import CSV.CSV;
@@ -16,7 +17,7 @@ public class KNNTest {
 
     @Test
     @DisplayName("Test de la clase KNN")
-    void KNNTest() throws IOException {
+    void KNNTest() throws IOException, DifferentFieldNumberInRawException {
         KNN knn = new KNN();
         knn.train(CSV.readTableWithLabels("src/main/resources/iris.csv"));
         List<Double> l = new ArrayList<>();
