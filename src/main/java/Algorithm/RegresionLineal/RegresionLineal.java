@@ -1,16 +1,18 @@
 package Algorithm.RegresionLineal;
 
+import Algorithm.Algorithm;
 import CSV.Table;
 
 import java.lang.Math;
 import java.util.List;
 
-public class RegresionLineal {
+public class RegresionLineal implements Algorithm<Table,Double,Double> {
     Double alpha, beta;
 
     public RegresionLineal() {
     }
 
+    @Override
     public void train(Table data) {
         Double mediaX, mediaY;
         double sumaX = 0.0, sumaY = 0.0, sumaNumerador = 0.0, sumaDenominador = 0.0;
@@ -33,6 +35,7 @@ public class RegresionLineal {
         beta = mediaY - alpha * mediaX;
     }
 
+    @Override
     public Double estimate(Double sample) {
         return alpha * sample + beta;
     }

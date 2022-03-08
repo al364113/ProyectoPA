@@ -2,8 +2,8 @@ package Algorithm;
 
 import CSV.Table;
 
-public interface Algorithm {
-    public <T extends Table> void Train(T tabla);
-    public <T, U> U estimate(T sample);
+public interface Algorithm<T,U,J> {
+    public void train(T tabla);
+    public U estimate(J sample);
 
 }
