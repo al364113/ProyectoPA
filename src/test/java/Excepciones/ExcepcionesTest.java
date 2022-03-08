@@ -28,4 +28,9 @@ public class ExcepcionesTest {
         assertThrows(EmptyTableException.class, () -> new TableWithLabels(lista, null));
 
     }
+
+    void ZeroDivisionExceptionTest() {
+
+
+    }
 }
