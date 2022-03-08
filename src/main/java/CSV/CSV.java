@@ -1,5 +1,7 @@
 package CSV;
 
+import Excepciones.DiferentFieldsNumberInRawException;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -16,18 +18,30 @@ public class CSV {
         try {
             br = new BufferedReader(new FileReader(nombreFichero));
             String line = br.readLine();
+            boolean nuevo = true;
+            int cont = 0;
 
             while (line != null) {
                 fila = new ArrayList<>();
                 for (String campo : line.split(",")) {
+                    if (nuevo) {
+                        cont++;
+                    }
                     fila.add(campo);
                 }
+                if (fila.size() != cont) {
+                    throw new DiferentFieldsNumberInRawException();
+                }
+                nuevo = false;
                 filas.add(fila);
                 line = br.readLine();
             }
             tabla = new Table(filas);
 
 
+        }catch (DiferentFieldsNumberInRawException e){
+            System.out.println("Fallo al leer el fichero en: CSV.readTable()");
+            System.out.println(e.toString());
         } catch (Exception e) {
             System.out.println("Fallo al leer el fichero en: CSV.readTable()");
             System.out.println(e.toString());
