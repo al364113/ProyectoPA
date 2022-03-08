@@ -1,9 +1,9 @@
-package practica1.KNN;
+package KNN;
 
+import Algorithm.KNN.KNN;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import practica1.CSV.CSV;
-import practica1.RegresionLineal.RegresionLineal;
+import CSV.CSV;
 
 import java.io.IOException;
 import java.util.ArrayList;

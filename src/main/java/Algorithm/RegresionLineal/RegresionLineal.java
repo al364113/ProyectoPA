@@ -1,6 +1,6 @@
-package practica1.RegresionLineal;
+package Algorithm.RegresionLineal;
 
-import practica1.CSV.Table;
+import CSV.Table;
 
 import java.lang.Math;
 import java.util.List;

@@ -1,4 +1,4 @@
-package practica1;
+package Suites;
 /*
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

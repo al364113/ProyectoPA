@@ -1,5 +1,6 @@
-package practica1.CSV;
+package CSV;
 
+import CSV.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

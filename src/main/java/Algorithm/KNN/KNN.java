@@ -1,8 +1,7 @@
-package practica1.KNN;
+package Algorithm.KNN;
 
-import practica1.CSV.Row;
-import practica1.CSV.RowWithLabel;
-import practica1.CSV.TableWithLabels;
+import CSV.RowWithLabel;
+import CSV.TableWithLabels;
 import java.lang.Math;
 import java.util.List;
 

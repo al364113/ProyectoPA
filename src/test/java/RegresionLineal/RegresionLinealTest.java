@@ -1,8 +1,9 @@
-package practica1.RegresionLineal;
+package RegresionLineal;
 
+import Algorithm.RegresionLineal.RegresionLineal;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import practica1.CSV.CSV;
+import CSV.CSV;
 import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

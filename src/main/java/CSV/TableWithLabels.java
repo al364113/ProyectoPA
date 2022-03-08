@@ -1,4 +1,4 @@
-package practica1.CSV;
+package CSV;
 
 import java.util.List;
 
