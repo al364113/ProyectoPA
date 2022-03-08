@@ -1,5 +1,7 @@
 package CSV;
 
+import Excepciones.EmptyTableException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -11,7 +13,10 @@ public class Table {
     public Table() {
     }
 
-    public Table(List<List<String>> tabla) {
+    public Table(List<List<String>> tabla) throws EmptyTableException {
+        if(tabla == null || tabla.size() == 0){
+            throw new EmptyTableException();
+        }
         headers = tabla.remove(0);
         for(List<String> fila: tabla){
             filas.add(new Row(fila));
