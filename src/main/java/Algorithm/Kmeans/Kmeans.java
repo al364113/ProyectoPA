@@ -4,6 +4,7 @@ import Algorithm.Algorithm;
 import CSV.Row;
 import CSV.Table;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -26,9 +27,14 @@ public class Kmeans implements Algorithm<Table, String, Row> {
 
         Random random = new Random(seed);
 
+        List<Row> centroides = new ArrayList<>();
         for(int i = 0; i<numberClusters; i++){
-            Row r = tabla.getRowAt(random.nextInt());
+            Row row = tabla.getRowAt(random.nextInt());
+            if (!centroides.contains(row)){
+                centroides.add(row);
+            }
         }
+
 
     }
 
