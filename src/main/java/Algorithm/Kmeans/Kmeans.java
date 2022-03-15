@@ -8,38 +8,92 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import Algorithm.KNN.KNN;
+
 public class Kmeans implements Algorithm<Table, String, Row> {
     int numberClusters;
     int iteractions;
     long seed;
+    List<List<Row>> grupos;
+    List<Row> centroides;
 
     public Kmeans() {
     }
 
-    public Kmeans(int numberClusters, int iteractions, long seed){
+    public Kmeans(int numberClusters, int iteractions, long seed) {
         this.numberClusters = numberClusters;
         this.iteractions = iteractions;
         this.seed = seed;
+        grupos = new ArrayList<List<Row>>();
+        centroides = new ArrayList<>();
     }
 
     @Override
-    public void train(Table tabla){
+    public void train(Table tabla) {
 
         Random random = new Random(seed);
 
-        List<Row> centroides = new ArrayList<>();
-        for(int i = 0; i<numberClusters; i++){
+
+        for (int i = 0; i < numberClusters; i++) {
             Row row = tabla.getRowAt(random.nextInt());
-            if (!centroides.contains(row)){
+            grupos.add(new ArrayList<Row>());
+            if (!centroides.contains(row)) {
                 centroides.add(row);
             }
+        }
+
+        for (int i = 0; i < iteractions; i++) {
+            agrupa(tabla);
+            recalculaCentroides();
         }
 
 
     }
 
     @Override
-    public String estimate(Row r){
+    public String estimate(Row r) {
 
+    }
+
+    private void agrupa(Table tabla) {
+        for (Row row : tabla.getRows()) {
+
+            double mejorDistancia = KNN.metricaEuclidea(row.getData(), centroides.get(0).getData());
+            int grupo = 0;
+            for (int i = 1; i < centroides.size(); i++) {
+                double distancia = KNN.metricaEuclidea(row.getData(), centroides.get(i).getData());
+                if (distancia < mejorDistancia) {
+                    mejorDistancia = distancia;
+                    grupo = i;
+                }
+            }
+            grupos.get(grupo).add(row);
+
+        }
+    }
+
+    private void recalculaCentroides() {
+        for (int i = 0; i < centroides.size(); i++) {
+            centroides.set(i, formulaCentroide(grupos.get(i)));
+        }
+    }
+
+    private Row formulaCentroide(List<Row> grupo) {
+        Row centroide;
+        int tamanyoGrupo = grupo.size();
+        List<Double> datos = new ArrayList<>(); //¿Inicializar a 0?
+        for (Row row : grupo) {
+            //Bucle para recorrer getData
+            List<Double> rowData = row.getData();
+            for (int i = 0; i < rowData.size(); i++) { //¿Size -1 (etiquetas)?
+                datos.set(i, datos.get(i) + rowData.get(i));
+            }
+        }
+        List<String> datosString = new ArrayList<>();
+        for (int i = 0; i < datos.size(); i++) {
+            datosString.set(i, "" + (datos.get(i) / tamanyoGrupo));
+        }
+        centroide = new Row(datosString);
+        return centroide;
     }
 }

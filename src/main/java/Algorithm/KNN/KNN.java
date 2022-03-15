@@ -31,7 +31,7 @@ public class KNN implements Algorithm<TableWithLabels,String,List<Double>> {
         return especie;
     }
 
-    private double metricaEuclidea (List<Double> sample, List<Double> filaTabla) {
+    public static double metricaEuclidea (List<Double> sample, List<Double> filaTabla) {
         double estimacion = 0.0;
         for (int i = 0; i< sample.size(); i++){
             estimacion += Math.pow(sample.get(i)- filaTabla.get(i),2);
