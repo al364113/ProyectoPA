@@ -54,7 +54,7 @@ public class Kmeans implements Algorithm<Table, String, Row> {
     public String estimate(Row r) {
         int grupo = 0;
         double mejorDistancia = KNN.metricaEuclidea(r.getData(), centroides.get(0).getData());
-        for(int i = 1; i < centroides.size(); i++){
+        for (int i = 1; i < centroides.size(); i++) {
             double distancia = KNN.metricaEuclidea(r.getData(), centroides.get(i).getData());
             if (distancia < mejorDistancia) {
                 mejorDistancia = distancia;
