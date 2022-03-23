@@ -6,6 +6,7 @@ import Excepciones.DifferentFieldNumberInRawException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import CSV.CSV;
+import CSV.Row;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,8 +19,13 @@ public class KmeansTest {
 
     @Test
     @DisplayName("Test de la clase Kmeans")
-    void meansTest(){
+    void meansTest() throws IOException, DifferentFieldNumberInRawException {
         Kmeans kmeans = new Kmeans();
+        kmeans.train(CSV.readTable("src/main/resources/iris_not_labels.csv"));
+        List<String> l = new ArrayList<>();
+        l.add("4.8");l.add("3.0");l.add("1.4");l.add("0.2");
+
+        System.out.println(kmeans.estimate(new Row(l)));
 
     }
 }
