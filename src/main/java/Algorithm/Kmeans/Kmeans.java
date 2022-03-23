@@ -57,34 +57,28 @@ public class Kmeans implements Algorithm<Table, String, Row> {
 
     @Override
     public String estimate(Row r) {
-        int grupo = 0;
-        double mejorDistancia = KNN.metricaEuclidea(r.getData(), centroides.get(0).getData());
-        for (int i = 1; i < centroides.size(); i++) {
-            double distancia = KNN.metricaEuclidea(r.getData(), centroides.get(i).getData());
-            if (distancia < mejorDistancia) {
-                mejorDistancia = distancia;
-                grupo = i;
-            }
-
-        }
+        int grupo = calculaGrupo(r);
         return "cluster-" + grupo;
     }
 
     private void agrupa(Table tabla) {
         for (Row row : tabla.getRows()) {
-
-            double mejorDistancia = KNN.metricaEuclidea(row.getData(), centroides.get(0).getData());
-            int grupo = 0;
-            for (int i = 1; i < centroides.size(); i++) {
-                double distancia = KNN.metricaEuclidea(row.getData(), centroides.get(i).getData());
-                if (distancia < mejorDistancia) {
-                    mejorDistancia = distancia;
-                    grupo = i;
-                }
-            }
+            int grupo = calculaGrupo(row);
             grupos.get(grupo).add(row);
-
         }
+    }
+
+    private int calculaGrupo (Row row) {
+        double mejorDistancia = KNN.metricaEuclidea(row.getData(), centroides.get(0).getData());
+        int grupo = 0;
+        for (int i = 1; i < centroides.size(); i++) {
+            double distancia = KNN.metricaEuclidea(row.getData(), centroides.get(i).getData());
+            if (distancia < mejorDistancia) {
+                mejorDistancia = distancia;
+                grupo = i;
+            }
+        }
+        return grupo;
     }
 
     private void recalculaCentroides() {
@@ -96,11 +90,10 @@ public class Kmeans implements Algorithm<Table, String, Row> {
     private Row formulaCentroide(List<Row> grupo) {
         Row centroide;
         int tamanyoGrupo = grupo.size();
-        List<Double> datos = new ArrayList<>(); //¿Inicializar a 0?
+        List<Double> datos = new ArrayList<>();
         for (Row row : grupo) {
-            //Bucle para recorrer getData
             List<Double> rowData = row.getData();
-            for (int i = 0; i < rowData.size(); i++) { //¿Size -1 (etiquetas)?
+            for (int i = 0; i < rowData.size(); i++) {
                 if (datos.size()<rowData.size()) {
                     datos.add(rowData.get(i));
                 } else {
