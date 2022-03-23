@@ -110,7 +110,7 @@ public class Kmeans implements Algorithm<Table, String, Row> {
         }
         List<String> datosString = new ArrayList<>();
         for (int i = 0; i < datos.size(); i++) {
-            datosString.set(i, "" + (datos.get(i) / tamanyoGrupo));
+            datosString.add( "" + (datos.get(i) / tamanyoGrupo));
         }
         centroide = new Row(datosString);
         return centroide;
