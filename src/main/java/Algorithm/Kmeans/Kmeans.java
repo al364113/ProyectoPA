@@ -25,7 +25,7 @@ public class Kmeans implements Algorithm<Table, String, Row> {
         this.iteractions = iteractions;
         this.seed = seed;
         grupos = new ArrayList<List<Row>>();
-        centroides = new ArrayList<>();
+        centroides = new ArrayList<Row>();
     }
 
     @Override
@@ -101,7 +101,11 @@ public class Kmeans implements Algorithm<Table, String, Row> {
             //Bucle para recorrer getData
             List<Double> rowData = row.getData();
             for (int i = 0; i < rowData.size(); i++) { //¿Size -1 (etiquetas)?
-                datos.set(i, datos.get(i) + rowData.get(i));
+                if (datos.size()<rowData.size()) {
+                    datos.add(rowData.get(i));
+                } else {
+                    datos.set(i, datos.get(i) + rowData.get(i));
+                }
             }
         }
         List<String> datosString = new ArrayList<>();
