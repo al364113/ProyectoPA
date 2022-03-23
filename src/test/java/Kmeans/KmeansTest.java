@@ -20,12 +20,12 @@ public class KmeansTest {
     @Test
     @DisplayName("Test de la clase Kmeans")
     void meansTest() throws IOException, DifferentFieldNumberInRawException {
-        Kmeans kmeans = new Kmeans();
+        Kmeans kmeans = new Kmeans(3,10,5);
         kmeans.train(CSV.readTable("src/main/resources/iris_not_labels.csv"));
         List<String> l = new ArrayList<>();
         l.add("4.8");l.add("3.0");l.add("1.4");l.add("0.2");
 
-        System.out.println(kmeans.estimate(new Row(l)));
+//        System.out.println(kmeans.estimate(new Row(l)));
 
     }
 }

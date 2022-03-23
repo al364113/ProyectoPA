@@ -35,11 +35,16 @@ public class Kmeans implements Algorithm<Table, String, Row> {
 
 
         for (int i = 0; i < numberClusters; i++) {
-            Row row = tabla.getRowAt(random.nextInt());
-            grupos.add(new ArrayList<Row>());
-            if (!centroides.contains(row)) {
-                centroides.add(row);
+            int n = random.nextInt();
+            if (n<0) {
+                n*=-1;
             }
+            if (n>= tabla.size()) {
+                n %= tabla.size();
+            }
+            Row row = tabla.getRowAt(n);
+            grupos.add(new ArrayList<Row>());
+            centroides.add(row);
         }
 
         for (int i = 0; i < iteractions; i++) {
