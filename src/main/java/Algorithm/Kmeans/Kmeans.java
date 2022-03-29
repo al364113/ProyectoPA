@@ -32,8 +32,6 @@ public class Kmeans implements Algorithm<Table, String, Row>, DistanceClient {
     @Override
     public void train(Table tabla) {
 
-
-
         Random random = new Random(seed);
         for (int i = 0; i < numberClusters; i++) {
             int n = damenumeroAleatorio(random, tabla.size());
@@ -46,7 +44,6 @@ public class Kmeans implements Algorithm<Table, String, Row>, DistanceClient {
             agrupa(tabla);
             recalculaCentroides();
         }
-
 
     }
 
