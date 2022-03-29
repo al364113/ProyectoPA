@@ -2,6 +2,8 @@ package Kmeans;
 
 import Algorithm.KNN.KNN;
 import Algorithm.Kmeans.Kmeans;
+import Algorithm.distance.Distance;
+import Algorithm.distance.EuclideanDistance;
 import Excepciones.DifferentFieldNumberInRawException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,7 +22,8 @@ public class KmeansTest {
     @Test
     @DisplayName("Test de la clase Kmeans")
     void meansTest() throws IOException, DifferentFieldNumberInRawException {
-        Kmeans kmeans = new Kmeans(3,10,5);
+        Distance distance = new EuclideanDistance();
+        Kmeans kmeans = new Kmeans(3,10,5, distance);
         kmeans.train(CSV.readTable("src/main/resources/iris_not_labels.csv"));
         List<String> l = new ArrayList<>();
         l.add("4.8");l.add("3.0");l.add("1.1");l.add("0.1");

@@ -1,13 +1,21 @@
 package Algorithm.KNN;
 
 import Algorithm.Algorithm;
+import Algorithm.distance.Distance;
+import Algorithm.distance.DistanceClient;
 import CSV.RowWithLabel;
 import CSV.TableWithLabels;
 import java.lang.Math;
 import java.util.List;
 
-public class KNN implements Algorithm<TableWithLabels,String,List<Double>> {
+public class KNN implements Algorithm<TableWithLabels,String,List<Double>>, DistanceClient {
     TableWithLabels data;
+    Distance distance;
+
+
+    public KNN(Distance distance){
+        this.distance = distance;
+    }
 
     @Override
     public void train (TableWithLabels data) {
@@ -21,7 +29,7 @@ public class KNN implements Algorithm<TableWithLabels,String,List<Double>> {
 
         for (int i =0; i< data.size(); i++){
             RowWithLabel r = data.getRowAt(i);
-            aux = metricaEuclidea(sample,r.getData());
+            aux = distance.calculateDistance(sample,r.getData());
             if (estimacion < 0 || aux < estimacion) {
                 estimacion = aux;
                 especie = r.getLabel();
@@ -31,12 +39,8 @@ public class KNN implements Algorithm<TableWithLabels,String,List<Double>> {
         return especie;
     }
 
-    public static double metricaEuclidea (List<Double> sample, List<Double> filaTabla) {
-        double estimacion = 0.0;
-        for (int i = 0; i< sample.size(); i++){
-            estimacion += Math.pow(sample.get(i)- filaTabla.get(i),2);
-        }
-        return Math.sqrt(estimacion);
+    @Override
+    public void setDistance(Distance distance) {
+        this.distance = distance;
     }
-
 }
