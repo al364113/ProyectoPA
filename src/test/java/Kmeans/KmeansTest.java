@@ -4,6 +4,7 @@ import Algorithm.KNN.KNN;
 import Algorithm.Kmeans.Kmeans;
 import Algorithm.distance.Distance;
 import Algorithm.distance.EuclideanDistance;
+import Algorithm.distance.ManhattanDistance;
 import Excepciones.DifferentFieldNumberInRawException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,8 +28,12 @@ public class KmeansTest {
         kmeans.train(CSV.readTable("src/main/resources/iris_not_labels.csv"));
         List<String> l = new ArrayList<>();
         l.add("4.8");l.add("3.0");l.add("1.1");l.add("0.1");
-
         assertEquals("cluster-0", kmeans.estimate(new Row(l)));
+
+        kmeans.setDistance(new ManhattanDistance());
+        assertEquals("cluster-0", kmeans.estimate(new Row(l)));
+
+
 
     }
 }

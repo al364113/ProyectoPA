@@ -3,6 +3,7 @@ package KNN;
 import Algorithm.KNN.KNN;
 import Algorithm.distance.Distance;
 import Algorithm.distance.EuclideanDistance;
+import Algorithm.distance.ManhattanDistance;
 import Excepciones.DifferentFieldNumberInRawException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,6 +28,9 @@ public class KNNTest {
         l.add(4.8);l.add(3.0);l.add(1.4);l.add(0.2);
         assertEquals("Iris-setosa", knn.estimate(l));
 
+
+        knn.setDistance(new ManhattanDistance());
+        assertEquals("Iris-setosa", knn.estimate(l));
 
     }
 }
