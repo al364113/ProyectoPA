@@ -3,8 +3,6 @@ package KNN;
 import Algorithm.KNN.KNN;
 import Algorithm.distance.Distance;
 import Algorithm.distance.DistanceType;
-import Algorithm.distance.EuclideanDistance;
-import Algorithm.distance.ManhattanDistance;
 import Algorithm.factory.DistanceFactory;
 import Excepciones.DifferentFieldNumberInRawException;
 import org.junit.jupiter.api.DisplayName;

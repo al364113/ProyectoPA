@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import Algorithm.KNN.KNN;
-
 public class Kmeans implements Algorithm<Table, String, Row>, DistanceClient {
     int numberClusters;
     int iteractions;
