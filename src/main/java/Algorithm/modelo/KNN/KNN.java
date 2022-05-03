@@ -1,4 +1,4 @@
-package Algorithm.KNN;
+package Algorithm.modelo.KNN;
 
 import Algorithm.Algorithm;
 import Algorithm.distance.Distance;

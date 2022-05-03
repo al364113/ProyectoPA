@@ -1,7 +1,8 @@
-package Algorithm.KNN.controlador;
+package Algorithm.controlador;
 
-import Algorithm.KNN.modelo.KNNModelInterface;
-import Algorithm.KNN.vista.KNNVistaInterface;
+import Algorithm.modelo.KNN.KNN;
+import Algorithm.modelo.KNN.KNNModelInterface;
+import Algorithm.vista.KNNVistaInterface;
 
 public class KNNController implements KNNControllerInterface{
     private KNNVistaInterface vista;
@@ -14,7 +15,7 @@ public class KNNController implements KNNControllerInterface{
     }
 
     @Override
-    public void estimateLine() {
+    public void estimateLine(String datos) {
 
     }
 
@@ -26,4 +27,10 @@ public class KNNController implements KNNControllerInterface{
     public void setModel(KNNModelInterface model) {
         this.model = model;
     }
+
+    public void leeRuta(String ruta){
+
+    }
 }
+
+

@@ -1,4 +1,4 @@
-package Algorithm.RegresionLineal;
+package Algorithm.modelo.RegresionLineal;
 
 import Algorithm.Algorithm;
 import CSV.Table;

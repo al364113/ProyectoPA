@@ -1,6 +1,6 @@
-package Algorithm.KNN.modelo;
+package Algorithm.modelo.KNN;
 
-import Algorithm.KNN.vista.KNNVistaInterface;
+import Algorithm.vista.KNNVistaInterface;
 
 public class KNNModel implements KNNModelInterface{
     private KNNVistaInterface vista;

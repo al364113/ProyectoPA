@@ -1,4 +1,4 @@
-package Algorithm.KNN.vista;
+package Algorithm.vista;
 
 public interface KNNVistaInterface {
 }

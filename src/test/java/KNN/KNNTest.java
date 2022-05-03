@@ -1,6 +1,6 @@
 package KNN;
 
-import Algorithm.KNN.KNN;
+import Algorithm.modelo.KNN.KNN;
 import Algorithm.distance.Distance;
 import Algorithm.distance.DistanceType;
 import Algorithm.factory.DistanceFactory;

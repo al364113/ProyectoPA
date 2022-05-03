@@ -1,4 +1,4 @@
-package Algorithm.KNN.modelo;
+package Algorithm.modelo.KNN;
 
 public interface KNNModelInterface {
 }
