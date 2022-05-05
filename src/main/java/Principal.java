@@ -18,7 +18,7 @@ public class Principal extends Application {
 
         modelo.setVista(vista);
         controlador.setVista(vista);
-        controlador.setModel(modelo);
+        controlador.setModelo(modelo);
         vista.setModelo(modelo);
         vista.setControlador(controlador);
         vista.creaGUI();

@@ -16,7 +16,7 @@ public class Controlador implements ControladorInterfaceForVista {
     }
 
 
-    public void setModel(ModeloInterfaceForControlador model) {
+    public void setModelo(ModeloInterfaceForControlador modelo) {
         this.modelo = modelo;
     }
 

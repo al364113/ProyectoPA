@@ -136,8 +136,11 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
     public void defineGrafica(ArrayList ejes){
         defineEjes(ejes);
+        activaDistancias();
+
         XYChart.Series series = new XYChart.Series();
-        series.getData().add(new XYChart.Data(1,3));
+
+        //      series.getData().add(new XYChart.Data(1,3));
     }
 
     public String getRuta(){
