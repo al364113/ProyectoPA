@@ -4,9 +4,13 @@ import Algorithm.controlador.KNNControllerInterface;
 import Algorithm.modelo.KNN.KNNModelInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.ScatterChart;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -46,40 +50,76 @@ public class KNNVista implements KNNVistaInterface {
 
         ObservableList distancias = FXCollections.observableArrayList("Euclidean", "Manhattan");
         ComboBox comboDistancias = new ComboBox<>(distancias);
+        comboDistancias.getSelectionModel().selectFirst();
+        comboDistancias.setDisable(true);
         //comboDistancias.setOnAction(actionEvent -> controlador.); //TODO
 
         TextField textField = new TextField("New Point");
         Label label = new Label("label");
+        label.setDisable(true);
         Button estimate = new Button("Estimate");
         estimate.setOnAction(actionEvent -> controlador.estimateLine(textField.getText()));
 
-        VBox vBox = new VBox(bOpenFile, comboDistancias, textField, estimate);
-
+        VBox vBoxD = new VBox(bOpenFile, comboDistancias, textField, label, estimate);
+        vBoxD.setAlignment(Pos.CENTER_LEFT);
 
         //Izquierda
-        ObservableList posGrafic = FXCollections.observableArrayList("sepal length", "sepal with", "petal length", "petal with");
+        ObservableList posGrafic = FXCollections.observableArrayList();
         ComboBox comboPosGrafic = new ComboBox<>(posGrafic);
 
+
         //Centro
-        titulo = new Label();
 
-
-        ObservableList posGraficB = FXCollections.observableArrayList("sepal length", "sepal with", "petal length", "petal with");
+        ObservableList posGraficB = FXCollections.observableArrayList();
         ComboBox comboPosGraficB = new ComboBox<>(posGraficB);
 
+        NumberAxis xAxis = new NumberAxis();
+        xAxis.setLabel("X");
+        xAxis.setLowerBound(0.0);
+        xAxis.setUpperBound(5.0);
 
-        HBox hBox = new HBox(comboPosGrafic, vBox);
+        NumberAxis yAxis = new NumberAxis();
+        yAxis.setLabel("Y");
+        yAxis.setLowerBound(0.0);
+        yAxis.setUpperBound(5.0);
+
+        ScatterChart scatter = new ScatterChart(xAxis,yAxis);
+
+
+        VBox vBoxC = new VBox(scatter,comboPosGraficB);
+        vBoxC.setAlignment(Pos.CENTER);
+
+
+
+       //Union final
+        HBox hBox = new HBox(comboPosGrafic,vBoxC, vBoxD);
+        hBox.setAlignment(Pos.CENTER);
         Scene scene = new Scene(hBox);
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public void cambiaTituloI (String text){
+
+    }
+    public void cambiaTituloD (String text){
 
     }
 
-    public void cambiaTextoI (String text){
+    public void muestraTitulo (){
 
     }
-    public void cambiaTextoD (String text){
+
+    public void definePosGrafic(){
+
+    }
+
+    public void defineLabel(){
+
+    }
+
+    public void activaDistancias(){
 
     }
 }
