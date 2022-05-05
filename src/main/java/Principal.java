@@ -1,5 +1,5 @@
 import Algorithm.controlador.Controlador;
-import Algorithm.modelo.KNN.KNNModel;
+import Algorithm.modelo.KNN.KNNModelo;
 import Algorithm.vista.Vista;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -13,7 +13,7 @@ public class Principal extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Controlador controlador = new Controlador();
-        KNNModel modelo = new KNNModel();
+        KNNModelo modelo = new KNNModelo();
         Vista vista = new Vista(primaryStage);
 
         modelo.setVista(vista);

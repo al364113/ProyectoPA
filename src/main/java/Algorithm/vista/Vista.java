@@ -1,7 +1,7 @@
 package Algorithm.vista;
 
 import Algorithm.controlador.ControladorInterfaceForVista;
-import Algorithm.modelo.KNN.KNNModelInterface;
+import Algorithm.modelo.ModeloInterfaceForVista;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -18,7 +18,7 @@ import javafx.scene.control.*;
 
 public class Vista implements VistaInterfaceForControlador, VistaInterfaceForModelo {
     private ControladorInterfaceForVista controlador;
-    private KNNModelInterface modelo;
+    private ModeloInterfaceForVista modelo;
     private final Stage stage;
     final FileChooser fileChooser = new FileChooser();
     private Label label;
@@ -35,7 +35,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         this.stage = stage;
     }
 
-    public void setModelo(KNNModelInterface modelo) {
+    public void setModelo(ModeloInterfaceForVista modelo) {
         this.modelo = modelo;
     }
 
