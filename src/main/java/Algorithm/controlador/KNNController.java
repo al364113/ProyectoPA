@@ -28,7 +28,13 @@ public class KNNController implements KNNControllerInterface{
         this.model = model;
     }
 
+    //Falta acabar
     public void leeRuta(String ruta){
+
+    }
+
+    //Falta acabar
+    public void cambioDistancias(String dist){
 
     }
 }

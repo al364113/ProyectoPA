@@ -48,20 +48,23 @@ public class KNNVista implements KNNVistaInterface {
         Button bOpenFile = new Button("Open file");
         bOpenFile.setOnAction(actionEvent ->  controlador.leeRuta(fileChooser.showOpenDialog(stage).toPath().toString()));
 
-        ObservableList distancias = FXCollections.observableArrayList("Euclidean", "Manhattan");
+        ObservableList distancias = FXCollections.observableArrayList("EUCLIDEAN", "MANHATTAN");
         ComboBox comboDistancias = new ComboBox<>(distancias);
         comboDistancias.getSelectionModel().selectFirst();
         comboDistancias.setDisable(true);
-        //comboDistancias.setOnAction(actionEvent -> controlador.); //TODO
+        comboDistancias.setOnAction(actionEvent -> controlador.);
 
         TextField textField = new TextField("New Point");
-        Label label = new Label("label");
+
+        Label label = new Label("Label");
         label.setDisable(true);
+
         Button estimate = new Button("Estimate");
         estimate.setOnAction(actionEvent -> controlador.estimateLine(textField.getText()));
 
         VBox vBoxD = new VBox(bOpenFile, comboDistancias, textField, label, estimate);
         vBoxD.setAlignment(Pos.CENTER_LEFT);
+
 
         //Izquierda
         ObservableList posGrafic = FXCollections.observableArrayList();
@@ -69,7 +72,6 @@ public class KNNVista implements KNNVistaInterface {
 
 
         //Centro
-
         ObservableList posGraficB = FXCollections.observableArrayList();
         ComboBox comboPosGraficB = new ComboBox<>(posGraficB);
 
@@ -120,6 +122,10 @@ public class KNNVista implements KNNVistaInterface {
     }
 
     public void activaDistancias(){
+
+    }
+
+    public void defineGrafica(){
 
     }
 }

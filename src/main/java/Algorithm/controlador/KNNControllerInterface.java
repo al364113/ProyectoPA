@@ -5,4 +5,6 @@ public interface KNNControllerInterface {
     void estimateLine(String datos);
 
     void leeRuta(String ruta);
+
+    void cambioDistancias(String dist);
 }
