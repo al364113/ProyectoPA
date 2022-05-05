@@ -2,10 +2,13 @@ package Algorithm.controlador;
 
 import Algorithm.modelo.ModeloInterfaceForControlador;
 import Algorithm.vista.VistaInterfaceForControlador;
+import Excepciones.DifferentFieldNumberInRawException;
+
+import java.io.IOException;
 
 public class Controlador implements ControladorInterfaceForVista {
     private VistaInterfaceForControlador vista;
-    private ModeloInterfaceForControlador model;
+    private ModeloInterfaceForControlador modelo;
 
 
     public void setVista(VistaInterfaceForControlador vista) {
@@ -14,13 +17,13 @@ public class Controlador implements ControladorInterfaceForVista {
 
 
     public void setModel(ModeloInterfaceForControlador model) {
-        this.model = model;
+        this.modelo = modelo;
     }
 
-    //Falta acabar
-    public void leeRuta(){
+    public void creaGrafica() throws IOException, DifferentFieldNumberInRawException {
         String ruta = vista.getRuta();
-
+        String dist = vista.getTipoDist();
+        modelo.creaGrafica(ruta,dist);
     }
 
     //Falta acabar

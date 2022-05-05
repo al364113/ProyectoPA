@@ -2,18 +2,23 @@ package Algorithm.vista;
 
 import Algorithm.controlador.ControladorInterfaceForVista;
 import Algorithm.modelo.ModeloInterfaceForVista;
+import Excepciones.DifferentFieldNumberInRawException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javafx.scene.control.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class Vista implements VistaInterfaceForControlador, VistaInterfaceForModelo {
@@ -29,6 +34,8 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     private ScatterChart scatter;
     private NumberAxis xAxis;
     private NumberAxis yAxis;
+    private ObservableList posGraficY;
+    private ObservableList posGraficX;
 
 
     public Vista(final Stage stage) {
@@ -47,7 +54,15 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
         //Derecha
         Button bOpenFile = new Button("Open file");
-        bOpenFile.setOnAction(actionEvent ->  controlador.leeRuta());
+        bOpenFile.setOnAction(actionEvent -> {
+            try {
+                controlador.creaGrafica();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (DifferentFieldNumberInRawException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         ObservableList distancias = FXCollections.observableArrayList("EUCLIDEAN", "MANHATTAN");
         comboDistancias = new ComboBox<>(distancias);
@@ -68,13 +83,13 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
 
         //Izquierda
-        ObservableList posGraficY = FXCollections.observableArrayList();
+        posGraficY = FXCollections.observableArrayList();
         comboPosGraficY = new ComboBox<>(posGraficY);
         comboPosGraficY.setOnAction(actionEvent -> controlador.cambiaY());
 
 
         //Centro
-        ObservableList posGraficX = FXCollections.observableArrayList();
+        posGraficX = FXCollections.observableArrayList();
         comboPosGraficX = new ComboBox<>(posGraficX);
         comboPosGraficX.setOnAction(actionEvent -> controlador.cambiaX());
 
@@ -119,9 +134,10 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     }
 
 
-    public void defineGrafica(){
-
-
+    public void defineGrafica(ArrayList ejes){
+        defineEjes(ejes);
+        XYChart.Series series = new XYChart.Series();
+        series.getData().add(new XYChart.Data(1,3));
     }
 
     public String getRuta(){
@@ -147,6 +163,17 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
     private void activaDistancias(){
         comboDistancias.setDisable(false );
+    }
+
+    private void defineEjes(ArrayList ejes){
+        posGraficY.setAll(ejes);
+        comboPosGraficY.getSelectionModel().select(0);
+        yAxis.setLabel(getY());
+
+        posGraficX.setAll(ejes);
+        comboPosGraficX.getSelectionModel().select(1);
+        xAxis.setLabel(getX());
+        cambiaTitulo(getY(),getX());
     }
 
 }
