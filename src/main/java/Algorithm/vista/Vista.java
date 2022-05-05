@@ -26,6 +26,9 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     private ComboBox comboPosGraficX;
     private ComboBox comboPosGraficY;
     private ComboBox comboDistancias;
+    private ScatterChart scatter;
+    private NumberAxis xAxis;
+    private NumberAxis yAxis;
 
 
     public Vista(final Stage stage) {
@@ -76,17 +79,17 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         comboPosGraficX.setOnAction(actionEvent -> controlador.cambiaX());
 
 
-        NumberAxis xAxis = new NumberAxis();
+        xAxis = new NumberAxis();
         xAxis.setLabel("X");
         xAxis.setLowerBound(0.0);
         xAxis.setUpperBound(5.0);
 
-        NumberAxis yAxis = new NumberAxis();
+        yAxis = new NumberAxis();
         yAxis.setLabel("Y");
         yAxis.setLowerBound(0.0);
         yAxis.setUpperBound(5.0);
 
-        ScatterChart scatter = new ScatterChart(xAxis,yAxis);
+        scatter = new ScatterChart(xAxis,yAxis);
 
 
         VBox vBoxC = new VBox(scatter,comboPosGraficX);
@@ -103,18 +106,21 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
     }
 
-    public void cambiaTituloI (String text){
 
+    public void defineLabel(String text){
+        label=new Label(text);
+        label.setDisable(false);
     }
-    public void cambiaTituloD (String text){
 
+    public void cambiaTitulo(String textI, String textD) {
+        scatter.setTitle(textI+" vs. "+textD);
+        xAxis.setLabel(textD);
+        yAxis.setLabel(textI);
     }
 
-    public void defineLabel(){
-
-    }
 
     public void defineGrafica(){
+
 
     }
 
@@ -140,7 +146,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
 
     private void activaDistancias(){
-
+        comboDistancias.setDisable(false );
     }
 
 }
