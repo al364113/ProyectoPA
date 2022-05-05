@@ -1,6 +1,6 @@
 package Algorithm.vista;
 
-import Algorithm.controlador.KNNControllerInterface;
+import Algorithm.controlador.ControllerInterfaceForVista;
 import Algorithm.modelo.KNN.KNNModelInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,19 +10,14 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.ScatterChart;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javafx.scene.control.*;
 
-import javax.swing.*;
-import java.io.File;
-import java.util.Observable;
 
-
-public class KNNVista implements KNNVistaInterface {
-    private KNNControllerInterface controlador;
+public class Vista implements VistaInterfaceForController {
+    private ControllerInterfaceForVista controlador;
     private KNNModelInterface modelo;
     private final Stage stage;
     final FileChooser fileChooser = new FileChooser();
@@ -30,7 +25,7 @@ public class KNNVista implements KNNVistaInterface {
     String texto = " .vs ";
     Label titulo;
 
-    public KNNVista(final Stage stage) {
+    public Vista(final Stage stage) {
         this.stage = stage;
     }
 
@@ -38,7 +33,7 @@ public class KNNVista implements KNNVistaInterface {
         this.modelo = modelo;
     }
 
-    public void setControlador(KNNControllerInterface controlador) {
+    public void setControlador(ControllerInterfaceForVista controlador) {
         this.controlador = controlador;
     }
 
@@ -52,7 +47,7 @@ public class KNNVista implements KNNVistaInterface {
         ComboBox comboDistancias = new ComboBox<>(distancias);
         comboDistancias.getSelectionModel().selectFirst();
         comboDistancias.setDisable(true);
-        comboDistancias.setOnAction(actionEvent -> controlador.);
+        comboDistancias.setOnAction(actionEvent -> controlador.cambioDistancias(comboDistancias.getSelectionModel().getSelectedItem().toString()));
 
         TextField textField = new TextField("New Point");
 
@@ -67,13 +62,16 @@ public class KNNVista implements KNNVistaInterface {
 
 
         //Izquierda
-        ObservableList posGrafic = FXCollections.observableArrayList();
-        ComboBox comboPosGrafic = new ComboBox<>(posGrafic);
+        ObservableList posGraficY = FXCollections.observableArrayList();
+        ComboBox comboPosGraficY = new ComboBox<>(posGraficY);
+        comboPosGraficY.setOnAction(actionEvent -> controlador.cambiaY(comboPosGraficY.getSelectionModel().getSelectedItem().toString()));
 
 
         //Centro
-        ObservableList posGraficB = FXCollections.observableArrayList();
-        ComboBox comboPosGraficB = new ComboBox<>(posGraficB);
+        ObservableList posGraficX = FXCollections.observableArrayList();
+        ComboBox comboPosGraficX = new ComboBox<>(posGraficX);
+        comboPosGraficX.setOnAction(actionEvent -> controlador.cambiaX(comboPosGraficX.getSelectionModel().getSelectedItem().toString()));
+
 
         NumberAxis xAxis = new NumberAxis();
         xAxis.setLabel("X");
@@ -88,13 +86,13 @@ public class KNNVista implements KNNVistaInterface {
         ScatterChart scatter = new ScatterChart(xAxis,yAxis);
 
 
-        VBox vBoxC = new VBox(scatter,comboPosGraficB);
+        VBox vBoxC = new VBox(scatter,comboPosGraficX);
         vBoxC.setAlignment(Pos.CENTER);
 
 
 
        //Union final
-        HBox hBox = new HBox(comboPosGrafic,vBoxC, vBoxD);
+        HBox hBox = new HBox(comboPosGraficY,vBoxC, vBoxD);
         hBox.setAlignment(Pos.CENTER);
         Scene scene = new Scene(hBox);
         stage.setScene(scene);

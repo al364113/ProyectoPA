@@ -1,11 +1,10 @@
 package Algorithm.controlador;
 
-import Algorithm.modelo.KNN.KNN;
 import Algorithm.modelo.KNN.KNNModelInterface;
-import Algorithm.vista.KNNVistaInterface;
+import Algorithm.vista.VistaInterfaceForController;
 
-public class KNNController implements KNNControllerInterface{
-    private KNNVistaInterface vista;
+public class Controller implements ControllerInterfaceForVista {
+    private VistaInterfaceForController vista;
     private KNNModelInterface model;
 
 
@@ -19,7 +18,7 @@ public class KNNController implements KNNControllerInterface{
 
     }
 
-    public void setVista(KNNVistaInterface vista) {
+    public void setVista(VistaInterfaceForController vista) {
         this.vista = vista;
     }
 
@@ -35,6 +34,18 @@ public class KNNController implements KNNControllerInterface{
 
     //Falta acabar
     public void cambioDistancias(String dist){
+
+    }
+
+    //Falta acabar
+    @Override
+    public void cambiaX(String X) {
+
+    }
+
+    //Falta acabar
+    @Override
+    public void cambiaY(String Y) {
 
     }
 }
