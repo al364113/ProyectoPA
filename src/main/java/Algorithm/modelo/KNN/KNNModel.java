@@ -1,11 +1,11 @@
 package Algorithm.modelo.KNN;
 
-import Algorithm.vista.VistaInterfaceForController;
+import Algorithm.vista.VistaInterfaceForModelo;
 
 public class KNNModel implements KNNModelInterface{
-    private VistaInterfaceForController vista;
+    private VistaInterfaceForModelo vista;
 
-    public void setVista(VistaInterfaceForController vista){
+    public void setVista(VistaInterfaceForModelo vista){
         this.vista = vista;
     }
 

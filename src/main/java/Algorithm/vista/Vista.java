@@ -1,6 +1,6 @@
 package Algorithm.vista;
 
-import Algorithm.controlador.ControllerInterfaceForVista;
+import Algorithm.controlador.ControladorInterfaceForVista;
 import Algorithm.modelo.KNN.KNNModelInterface;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,14 +16,17 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 
 
-public class Vista implements VistaInterfaceForController {
-    private ControllerInterfaceForVista controlador;
+public class Vista implements VistaInterfaceForControlador, VistaInterfaceForModelo {
+    private ControladorInterfaceForVista controlador;
     private KNNModelInterface modelo;
     private final Stage stage;
     final FileChooser fileChooser = new FileChooser();
+    private Label label;
+    private TextField textField;
+    private ComboBox comboPosGraficX;
+    private ComboBox comboPosGraficY;
+    private ComboBox comboDistancias;
 
-    String texto = " .vs ";
-    Label titulo;
 
     public Vista(final Stage stage) {
         this.stage = stage;
@@ -33,7 +36,7 @@ public class Vista implements VistaInterfaceForController {
         this.modelo = modelo;
     }
 
-    public void setControlador(ControllerInterfaceForVista controlador) {
+    public void setControlador(ControladorInterfaceForVista controlador) {
         this.controlador = controlador;
     }
 
@@ -41,21 +44,21 @@ public class Vista implements VistaInterfaceForController {
 
         //Derecha
         Button bOpenFile = new Button("Open file");
-        bOpenFile.setOnAction(actionEvent ->  controlador.leeRuta(fileChooser.showOpenDialog(stage).toPath().toString()));
+        bOpenFile.setOnAction(actionEvent ->  controlador.leeRuta());
 
         ObservableList distancias = FXCollections.observableArrayList("EUCLIDEAN", "MANHATTAN");
-        ComboBox comboDistancias = new ComboBox<>(distancias);
+        comboDistancias = new ComboBox<>(distancias);
         comboDistancias.getSelectionModel().selectFirst();
         comboDistancias.setDisable(true);
-        comboDistancias.setOnAction(actionEvent -> controlador.cambioDistancias(comboDistancias.getSelectionModel().getSelectedItem().toString()));
+        comboDistancias.setOnAction(actionEvent -> controlador.cambioDistancias());
 
-        TextField textField = new TextField("New Point");
+        textField = new TextField("New Point");
 
-        Label label = new Label("Label");
+        label = new Label("Label");
         label.setDisable(true);
 
         Button estimate = new Button("Estimate");
-        estimate.setOnAction(actionEvent -> controlador.estimateLine(textField.getText()));
+        estimate.setOnAction(actionEvent -> controlador.estimateLine());
 
         VBox vBoxD = new VBox(bOpenFile, comboDistancias, textField, label, estimate);
         vBoxD.setAlignment(Pos.CENTER_LEFT);
@@ -63,14 +66,14 @@ public class Vista implements VistaInterfaceForController {
 
         //Izquierda
         ObservableList posGraficY = FXCollections.observableArrayList();
-        ComboBox comboPosGraficY = new ComboBox<>(posGraficY);
-        comboPosGraficY.setOnAction(actionEvent -> controlador.cambiaY(comboPosGraficY.getSelectionModel().getSelectedItem().toString()));
+        comboPosGraficY = new ComboBox<>(posGraficY);
+        comboPosGraficY.setOnAction(actionEvent -> controlador.cambiaY());
 
 
         //Centro
         ObservableList posGraficX = FXCollections.observableArrayList();
-        ComboBox comboPosGraficX = new ComboBox<>(posGraficX);
-        comboPosGraficX.setOnAction(actionEvent -> controlador.cambiaX(comboPosGraficX.getSelectionModel().getSelectedItem().toString()));
+        comboPosGraficX = new ComboBox<>(posGraficX);
+        comboPosGraficX.setOnAction(actionEvent -> controlador.cambiaX());
 
 
         NumberAxis xAxis = new NumberAxis();
@@ -107,23 +110,38 @@ public class Vista implements VistaInterfaceForController {
 
     }
 
-    public void muestraTitulo (){
-
-    }
-
-    public void definePosGrafic(){
-
-    }
-
     public void defineLabel(){
-
-    }
-
-    public void activaDistancias(){
 
     }
 
     public void defineGrafica(){
 
     }
+
+    public String getRuta(){
+        return fileChooser.showOpenDialog(stage).toPath().toString();
+    }
+
+    public String getNuevosDatos(){
+        return textField.getText();
+    }
+
+    public String getX(){
+        return comboPosGraficX.getSelectionModel().getSelectedItem().toString();
+    }
+
+    public String getY(){
+        return comboPosGraficY.getSelectionModel().getSelectedItem().toString();
+    }
+
+    public String getTipoDist(){
+        return comboDistancias.getSelectionModel().getSelectedItem().toString();
+    }
+
+
+    private void activaDistancias(){
+
+    }
+
 }
+

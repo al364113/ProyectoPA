@@ -1,4 +1,4 @@
-import Algorithm.controlador.Controller;
+import Algorithm.controlador.Controlador;
 import Algorithm.modelo.KNN.KNNModel;
 import Algorithm.vista.Vista;
 import javafx.application.Application;
@@ -12,7 +12,7 @@ public class Principal extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Controller controlador = new Controller();
+        Controlador controlador = new Controlador();
         KNNModel modelo = new KNNModel();
         Vista vista = new Vista(primaryStage);
 
