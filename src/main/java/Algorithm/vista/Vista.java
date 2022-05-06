@@ -115,6 +115,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         HBox hBox = new HBox(comboPosGraficY,vBoxC, vBoxD);
         hBox.setAlignment(Pos.CENTER);
         Scene scene = new Scene(hBox);
+
         stage.setScene(scene);
         stage.show();
 
@@ -136,10 +137,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     public void defineGrafica(ArrayList ejes, List<List<Double>> datos, List<String> etiquetas){
         defineEjes(ejes);
         activaDistancias();
-
-        XYChart.Series series = new XYChart.Series();
-
-        //      series.getData().add(new XYChart.Data(1,3));
+        montaEjes(datos,etiquetas);
     }
 
     public String getRuta(){
@@ -176,6 +174,31 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         comboPosGraficX.getSelectionModel().select(1);
         xAxis.setLabel(getX());
         cambiaTitulo(getY(),getX());
+    }
+
+    private void montaEjes (List<List<Double>> datos, List<String> etiquetas){
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("Iris-setosa");
+
+
+        XYChart.Series series2 = new XYChart.Series();
+        series2.setName("Iris-versicolor");
+
+        XYChart.Series series3 = new XYChart.Series();
+        series3.setName("Iris-virginica");
+
+        for (int i =0; i<datos.get(0).size(); i++) {
+            if (etiquetas.get(i).equals("Iris-setosa")) {
+                series1.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
+            } else if (etiquetas.get(i).equals("Iris-versicolor")) {
+                series2.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
+            } else if (etiquetas.get(i).equals("Iris-virginica")) {
+                series3.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
+            }
+        }
+
+        scatter.getData().addAll(series1,series2,series3);
+
     }
 
 }
