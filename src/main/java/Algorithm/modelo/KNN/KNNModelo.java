@@ -10,6 +10,8 @@ import CSV.TableWithLabels;
 import Excepciones.DifferentFieldNumberInRawException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForControlador {
     private VistaInterfaceForModelo vista;
@@ -24,7 +26,7 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
         tabla = CSV.readTableWithLabels(ruta);
         creaKNN(dist);
         knn.train(tabla);
-        vista.defineGrafica(tabla.getHeaders());
+        vista.defineGrafica(tabla.getHeaders(),recogeColumnas(1, 0), tabla.getEtiquetas());
     }
 
 
@@ -35,4 +37,13 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
             knn = new KNN(new ManhattanDistance());
         }
     }
+
+    private List<List<Double>> recogeColumnas(int x, int y){
+        List<List<Double>> list = new ArrayList<>();
+        list.add(tabla.getColumAt(x));
+        list.add(tabla.getColumAt(y));
+        return list;
+    }
+
+
 }

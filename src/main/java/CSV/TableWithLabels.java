@@ -6,10 +6,12 @@ import java.util.List;
 
 public class TableWithLabels extends Table {
 
+    private List<String> etiquetas;
     public TableWithLabels() {
     }
 
     public TableWithLabels(List<List<String>> tabla, List<String> etiquetas) throws EmptyTableException {
+        this.etiquetas = etiquetas;
         if(tabla == null || tabla.size() == 0){
             throw new EmptyTableException();
         }
@@ -23,6 +25,10 @@ public class TableWithLabels extends Table {
     @Override
     public RowWithLabel getRowAt(int fila) {
         return (RowWithLabel) filas.get(fila);
+    }
+
+    public List<String> getEtiquetas(){
+        return etiquetas;
     }
 
 }

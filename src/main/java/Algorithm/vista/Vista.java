@@ -19,6 +19,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Vista implements VistaInterfaceForControlador, VistaInterfaceForModelo {
@@ -132,7 +133,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     }
 
 
-    public void defineGrafica(ArrayList ejes){
+    public void defineGrafica(ArrayList ejes, List<List<Double>> datos, List<String> etiquetas){
         defineEjes(ejes);
         activaDistancias();
 
