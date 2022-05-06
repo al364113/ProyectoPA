@@ -58,7 +58,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
             try {
                 controlador.creaGrafica();
             } catch (IOException | DifferentFieldNumberInRawException e) {
-                e.printStackTrace();
+                e.printStackTrace(); //TODO
             }
         });
 
