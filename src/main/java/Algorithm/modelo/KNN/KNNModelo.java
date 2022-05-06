@@ -20,12 +20,10 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
         this.vista = vista;
     }
     @Override
-    public void creaGrafica(String ruta, String dist) throws IOException, DifferentFieldNumberInRawException {
+    public void creaGrafica(String ruta, String dist) {
         tabla = CSV.readTableWithLabels(ruta);
         creaKNN(dist);
         knn.train(tabla);
-
-
         vista.defineGrafica(tabla.getHeaders());
     }
 

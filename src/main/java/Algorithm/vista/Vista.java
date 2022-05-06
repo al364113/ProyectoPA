@@ -57,10 +57,8 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         bOpenFile.setOnAction(actionEvent -> {
             try {
                 controlador.creaGrafica();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (DifferentFieldNumberInRawException e) {
-                throw new RuntimeException(e);
+            } catch (IOException | DifferentFieldNumberInRawException e) {
+                e.printStackTrace();
             }
         });
 

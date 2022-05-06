@@ -51,7 +51,7 @@ public class CSV {
         return tabla;
     }
 
-    public static TableWithLabels readTableWithLabels(String nombreFichero) throws IOException, DifferentFieldNumberInRawException {
+    public static TableWithLabels readTableWithLabels(String nombreFichero) {
         BufferedReader br = null;
         List<String> fila;
         List<List<String>> filas = new ArrayList<>();
@@ -85,13 +85,17 @@ public class CSV {
 
 
         } catch (DifferentFieldNumberInRawException e) {
-            throw new DifferentFieldNumberInRawException();
+            e.printStackTrace();
         } catch (Exception e) {
             System.out.println("Fallo al leer el fichero en: CSV.readTableWithLabels()");
             System.out.println(e.toString());
         } finally {
             if (br != null) {
-                br.close();
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 
