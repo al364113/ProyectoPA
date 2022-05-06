@@ -11,7 +11,5 @@ public interface ControladorInterfaceForVista {
 
     void cambioDistancias();
 
-    void cambiaY();
-
-    void cambiaX();
+    public void cambiaEjes();
 }

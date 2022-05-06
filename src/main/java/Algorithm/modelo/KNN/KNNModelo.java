@@ -29,6 +29,11 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
         vista.defineGrafica(tabla.getHeaders(),recogeColumnas(1, 0), tabla.getEtiquetas());
     }
 
+    public void acutalizaGrafica(String x, String y){
+        int nX=nEtiqueta(x);
+        int nY=nEtiqueta(y);
+        vista.actualizaGrafica(recogeColumnas(nX,nY));
+    }
 
     private void creaKNN (String dist){
         if (dist.equals("EUCLIDEAN")) {
@@ -43,6 +48,10 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
         list.add(tabla.getColumAt(x));
         list.add(tabla.getColumAt(y));
         return list;
+    }
+
+    private int nEtiqueta (String nombre){
+        return tabla.getHeaders().indexOf(nombre);
     }
 
 

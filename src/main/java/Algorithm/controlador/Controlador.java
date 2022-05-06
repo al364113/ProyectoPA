@@ -31,17 +31,14 @@ public class Controlador implements ControladorInterfaceForVista {
 
     }
 
-    //Falta acabar
+    //Falta acabarrecogeColumnas(nEtiqueta(x),nEtiqueta(y));
     @Override
-    public void cambiaX() {
-
+    public void cambiaEjes() {
+        if(vista.getX()!=null && vista.getY()!=null) {
+            modelo.acutalizaGrafica(vista.getX(), vista.getY());
+        }
     }
 
-    //Falta acabar
-    @Override
-    public void cambiaY() {
-
-    }
 
     @Override
     public void estimateLine() {

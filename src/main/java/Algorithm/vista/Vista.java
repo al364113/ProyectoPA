@@ -37,6 +37,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     private NumberAxis yAxis;
     private ObservableList posGraficY;
     private ObservableList posGraficX;
+    private  List<String> etiquetas;
 
 
     public Vista(final Stage stage) {
@@ -84,13 +85,13 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         //Izquierda
         posGraficY = FXCollections.observableArrayList();
         comboPosGraficY = new ComboBox<>(posGraficY);
-        comboPosGraficY.setOnAction(actionEvent -> controlador.cambiaY());
+        comboPosGraficY.setOnAction(actionEvent -> controlador.cambiaEjes());
 
 
         //Centro
         posGraficX = FXCollections.observableArrayList();
         comboPosGraficX = new ComboBox<>(posGraficX);
-        comboPosGraficX.setOnAction(actionEvent -> controlador.cambiaX());
+        comboPosGraficX.setOnAction(actionEvent -> controlador.cambiaEjes());
 
 
         xAxis = new NumberAxis();
@@ -137,7 +138,15 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     public void defineGrafica(ArrayList ejes, List<List<Double>> datos, List<String> etiquetas){
         defineEjes(ejes);
         activaDistancias();
+        this.etiquetas=etiquetas;
         montaEjes(datos,etiquetas);
+    }
+
+    public void actualizaGrafica(List<List<Double>> datos){
+        montaEjes(datos,etiquetas);
+        xAxis.setLabel(getX());
+        yAxis.setLabel(getY());
+        cambiaTitulo(getY(),getX());
     }
 
     public String getRuta(){
@@ -152,10 +161,9 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         return comboPosGraficX.getSelectionModel().getSelectedItem().toString();
     }
 
-    public String getY(){
+    public String getY() {
         return comboPosGraficY.getSelectionModel().getSelectedItem().toString();
     }
-
     public String getTipoDist(){
         return comboDistancias.getSelectionModel().getSelectedItem().toString();
     }
@@ -177,6 +185,12 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     }
 
     private void montaEjes (List<List<Double>> datos, List<String> etiquetas){
+
+
+        //Si pones esto debería funcionar, pero no lo hace:
+
+//                scatter = new ScatterChart(yAxis,xAxis);
+
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Iris-setosa");
 
