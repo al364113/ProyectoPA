@@ -7,5 +7,6 @@ public interface VistaInterfaceForControlador {
     public String getX();
     public String getY();
     public String getTipoDist();
+    public boolean getBooleanXY();
 
 }

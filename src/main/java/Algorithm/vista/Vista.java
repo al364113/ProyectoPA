@@ -38,6 +38,8 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     private ObservableList posGraficY;
     private ObservableList posGraficX;
     private  List<String> etiquetas;
+    private boolean boolY =false;
+    private boolean boolX =false;
 
 
     public Vista(final Stage stage) {
@@ -168,6 +170,12 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         return comboDistancias.getSelectionModel().getSelectedItem().toString();
     }
 
+    public boolean getBooleanXY(){
+        boolean ret=false;
+        if (boolY && boolX) ret=true;
+        return ret;
+    }
+
 
     private void activaDistancias(){
         comboDistancias.setDisable(false );
@@ -176,10 +184,12 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     private void defineEjes(ArrayList ejes){
         posGraficY.setAll(ejes);
         comboPosGraficY.getSelectionModel().select(0);
+        boolY=true;
         yAxis.setLabel(getY());
 
         posGraficX.setAll(ejes);
         comboPosGraficX.getSelectionModel().select(1);
+        boolX=true;
         xAxis.setLabel(getX());
         cambiaTitulo(getY(),getX());
     }

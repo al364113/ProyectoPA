@@ -34,7 +34,7 @@ public class Controlador implements ControladorInterfaceForVista {
     //Falta acabarrecogeColumnas(nEtiqueta(x),nEtiqueta(y));
     @Override
     public void cambiaEjes() {
-        if(vista.getX()!=null && vista.getY()!=null) {
+        if(vista.getBooleanXY()) {
             modelo.acutalizaGrafica(vista.getX(), vista.getY());
         }
     }
