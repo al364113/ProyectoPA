@@ -130,12 +130,6 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         label.setDisable(false);
     }
 
-    public void cambiaTitulo(String textI, String textD) {
-        scatter.setTitle(textI+" vs. "+textD);
-        xAxis.setLabel(textD);
-        yAxis.setLabel(textI);
-    }
-
 
     public void defineGrafica(ArrayList ejes, List<List<Double>> datos, List<String> etiquetas){
         posGraficY.setAll(ejes);
@@ -188,7 +182,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     private void modificaEjes(){
         yAxis.setLabel(getY());
         xAxis.setLabel(getX());
-        cambiaTitulo(getY(),getX());
+        scatter.setTitle(getY()+" vs. "+getX());
     }
 
     private void montaEjes (List<List<Double>> datos, List<String> etiquetas){
@@ -196,7 +190,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
         //Si pones esto debería funcionar, pero no lo hace:
 
-
+//        scatter = new ScatterChart(xAxis,yAxis);
 
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Iris-setosa");
@@ -217,8 +211,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
                 series3.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
             }
         }
-
-        scatter.getData().addAll(series1,series2,series3);
+        scatter.getData().setAll(series1,series2,series3);
 
     }
 
