@@ -138,7 +138,13 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
 
     public void defineGrafica(ArrayList ejes, List<List<Double>> datos, List<String> etiquetas){
-        defineEjes(ejes);
+        posGraficY.setAll(ejes);
+        comboPosGraficY.getSelectionModel().select(0);
+        boolY=true;
+        posGraficX.setAll(ejes);
+        comboPosGraficX.getSelectionModel().select(1);
+        boolX=true;
+        modificaEjes();
         activaDistancias();
         this.etiquetas=etiquetas;
         montaEjes(datos,etiquetas);
@@ -146,9 +152,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
     public void actualizaGrafica(List<List<Double>> datos){
         montaEjes(datos,etiquetas);
-        xAxis.setLabel(getX());
-        yAxis.setLabel(getY());
-        cambiaTitulo(getY(),getX());
+        modificaEjes();
     }
 
     public String getRuta(){
@@ -181,15 +185,8 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         comboDistancias.setDisable(false );
     }
 
-    private void defineEjes(ArrayList ejes){
-        posGraficY.setAll(ejes);
-        comboPosGraficY.getSelectionModel().select(0);
-        boolY=true;
+    private void modificaEjes(){
         yAxis.setLabel(getY());
-
-        posGraficX.setAll(ejes);
-        comboPosGraficX.getSelectionModel().select(1);
-        boolX=true;
         xAxis.setLabel(getX());
         cambiaTitulo(getY(),getX());
     }
@@ -199,7 +196,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
         //Si pones esto debería funcionar, pero no lo hace:
 
-//                scatter = new ScatterChart(yAxis,xAxis);
+
 
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Iris-setosa");
