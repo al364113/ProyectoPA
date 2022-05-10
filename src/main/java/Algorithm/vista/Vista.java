@@ -40,6 +40,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     private  List<String> etiquetas;
     private boolean boolY =false;
     private boolean boolX =false;
+    Button estimate;
 
 
     public Vista(final Stage stage) {
@@ -68,16 +69,18 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
         ObservableList distancias = FXCollections.observableArrayList("EUCLIDEAN", "MANHATTAN");
         comboDistancias = new ComboBox<>(distancias);
-        comboDistancias.getSelectionModel().selectFirst();
         comboDistancias.setDisable(true);
         comboDistancias.setOnAction(actionEvent -> controlador.cambioDistancias());
+        comboDistancias.getSelectionModel().selectFirst();
+
 
         textField = new TextField("New Point");
 
         label = new Label("Label");
         label.setDisable(true);
 
-        Button estimate = new Button("Estimate");
+        estimate = new Button("Estimate");
+        estimate.setDisable(true);
         estimate.setOnAction(actionEvent -> controlador.estimateLine());
 
         VBox vBoxD = new VBox(bOpenFile, comboDistancias, textField, label, estimate);
@@ -153,7 +156,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         return fileChooser.showOpenDialog(stage).toPath().toString();
     }
 
-    public String getNuevosDatos(){
+    public String getPunto(){
         return textField.getText();
     }
 
@@ -176,7 +179,8 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
 
     private void activaDistancias(){
-        comboDistancias.setDisable(false );
+        comboDistancias.setDisable(false);
+        estimate.setDisable(false);
     }
 
     private void modificaEjes(){
@@ -185,12 +189,25 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         scatter.setTitle(getY()+" vs. "+getX());
     }
 
+    public void nuevoPunto(Double coord1, Double coord2, String etiqueta){
+        anyadePunto(coord1, coord2);
+        modificaEtiqueta(etiqueta);
+    }
+
+
+    private void anyadePunto(Double coord1, Double coord2){
+        XYChart.Series series4 = new XYChart.Series();
+        series4.setName("Punto-nuevo");
+        series4.getData().setAll(new XYChart.Data(coord1, coord2));
+        scatter.getData().set(3,series4);
+    }
+
+    private void modificaEtiqueta(String etiqueta){
+        label.setDisable(false);
+        label.setText(etiqueta);
+    }
+
     private void montaEjes (List<List<Double>> datos, List<String> etiquetas){
-
-
-        //Si pones esto debería funcionar, pero no lo hace:
-
-//        scatter = new ScatterChart(xAxis,yAxis);
 
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("Iris-setosa");
@@ -202,6 +219,9 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         XYChart.Series series3 = new XYChart.Series();
         series3.setName("Iris-virginica");
 
+        XYChart.Series series4 = new XYChart.Series();
+        series4.setName("Punto-nuevo");
+
         for (int i =0; i<datos.get(0).size(); i++) {
             if (etiquetas.get(i).equals("Iris-setosa")) {
                 series1.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
@@ -211,9 +231,12 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
                 series3.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
             }
         }
-        scatter.getData().setAll(series1,series2,series3);
+        scatter.getData().setAll(series1,series2,series3, series4);
 
     }
+
+
+
 
 }
 

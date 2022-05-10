@@ -5,6 +5,8 @@ import Algorithm.vista.VistaInterfaceForControlador;
 import Excepciones.DifferentFieldNumberInRawException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Controlador implements ControladorInterfaceForVista {
     private VistaInterfaceForControlador vista;
@@ -26,12 +28,10 @@ public class Controlador implements ControladorInterfaceForVista {
         modelo.creaGrafica(ruta,dist);
     }
 
-    //Falta acabar
     public void cambioDistancias(){
-
+       modelo.actualizaDistancia(vista.getTipoDist());
     }
 
-    //Falta acabarrecogeColumnas(nEtiqueta(x),nEtiqueta(y));
     @Override
     public void cambiaEjes() {
         if(vista.getBooleanXY()) {
@@ -42,7 +42,15 @@ public class Controlador implements ControladorInterfaceForVista {
 
     @Override
     public void estimateLine() {
+        modelo.nuevoPunto(cadenaADouble(vista.getPunto()));
+    }
 
+    private List<Double> cadenaADouble(String punto){
+        List<Double> lista = new ArrayList<>();
+        for(String coord: punto.split(",")){
+            lista.add(new Double(coord));
+        }
+        return lista;
     }
 }
 

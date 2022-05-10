@@ -17,6 +17,9 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
     private VistaInterfaceForModelo vista;
     private KNN knn;
     private TableWithLabels tabla;
+    private int nX = 1, nY = 0;
+    private List<Double> punto = null;
+    private String etiqueta;
 
     public void setVista(VistaInterfaceForModelo vista){
         this.vista = vista;
@@ -26,13 +29,25 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
         tabla = CSV.readTableWithLabels(ruta);
         creaKNN(dist);
         knn.train(tabla);
-        vista.defineGrafica(tabla.getHeaders(),recogeColumnas(1, 0), tabla.getEtiquetas());
+        vista.defineGrafica(tabla.getHeaders(),recogeColumnas(nX, nY), tabla.getEtiquetas());
     }
 
     public void acutalizaGrafica(String x, String y){
-        int nX=nEtiqueta(x);
-        int nY=nEtiqueta(y);
+        nX=nEtiqueta(x);
+        nY=nEtiqueta(y);
         vista.actualizaGrafica(recogeColumnas(nX,nY));
+        if(punto != null){
+            vista.nuevoPunto(punto.get(nX), punto.get(nY), etiqueta);
+        }
+    }
+
+    @Override
+    public void actualizaDistancia(String dist){
+        creaKNN(dist);
+        knn.train(tabla);
+        if(punto != null) {
+            actualizaPunto();
+        }
     }
 
     private void creaKNN (String dist){
@@ -54,5 +69,15 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
         return tabla.getHeaders().indexOf(nombre);
     }
 
+
+    public void nuevoPunto(List<Double> punto){
+        this.punto = punto;
+        actualizaPunto();
+    }
+
+    private void actualizaPunto(){
+        etiqueta = knn.estimate(punto);
+        vista.nuevoPunto(punto.get(nX), punto.get(nY), etiqueta);
+    }
 
 }
