@@ -58,6 +58,7 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
         }
     }
 
+    //Recoge los datos de la columna
     private List<List<Double>> recogeColumnas(int x, int y){
         List<List<Double>> list = new ArrayList<>();
         list.add(tabla.getColumAt(x));
@@ -65,6 +66,7 @@ public class KNNModelo implements ModeloInterfaceForVista, ModeloInterfaceForCon
         return list;
     }
 
+    //Recoge el índice de la etiqueta
     private int nEtiqueta (String nombre){
         return tabla.getHeaders().indexOf(nombre);
     }

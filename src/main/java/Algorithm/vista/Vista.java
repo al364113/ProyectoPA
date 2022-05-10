@@ -152,6 +152,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         modificaEjes();
     }
 
+    //Devuelve la ruta del archivo
     public String getRuta(){
         return fileChooser.showOpenDialog(stage).toPath().toString();
     }
@@ -171,6 +172,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         return comboDistancias.getSelectionModel().getSelectedItem().toString();
     }
 
+    //Comprueba si los ejes X e Y están seleccionados
     public boolean getBooleanXY(){
         boolean ret=false;
         if (boolY && boolX) ret=true;
@@ -183,6 +185,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         estimate.setDisable(false);
     }
 
+    //Modifica los nombres de los ejes
     private void modificaEjes(){
         yAxis.setLabel(getY());
         xAxis.setLabel(getX());
