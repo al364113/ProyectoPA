@@ -1,6 +1,8 @@
-import Algorithm.controlador.Controlador;
-import Algorithm.modelo.KNN.KNNModelo;
-import Algorithm.vista.Vista;
+package javafx;
+
+import javafx.controlador.Controlador;
+import javafx.modelo.KNNModelo;
+import javafx.vista.Vista;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

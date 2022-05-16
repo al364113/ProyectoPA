@@ -1,4 +1,4 @@
-package Algorithm.vista;
+package javafx.vista;
 
 import java.util.ArrayList;
 import java.util.List;

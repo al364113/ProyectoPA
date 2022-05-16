@@ -1,15 +1,12 @@
-package Algorithm.modelo.KNN;
+package javafx.modelo;
 
 import Algorithm.distance.EuclideanDistance;
 import Algorithm.distance.ManhattanDistance;
-import Algorithm.modelo.ModeloInterfaceForVista;
-import Algorithm.modelo.ModeloInterfaceForControlador;
-import Algorithm.vista.VistaInterfaceForModelo;
+import Algorithm.KNN.KNN;
+import javafx.vista.VistaInterfaceForModelo;
 import CSV.CSV;
 import CSV.TableWithLabels;
-import Excepciones.DifferentFieldNumberInRawException;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

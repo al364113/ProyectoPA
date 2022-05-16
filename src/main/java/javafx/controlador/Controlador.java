@@ -1,7 +1,7 @@
-package Algorithm.controlador;
+package javafx.controlador;
 
-import Algorithm.modelo.ModeloInterfaceForControlador;
-import Algorithm.vista.VistaInterfaceForControlador;
+import javafx.modelo.ModeloInterfaceForControlador;
+import javafx.vista.VistaInterfaceForControlador;
 import Excepciones.DifferentFieldNumberInRawException;
 
 import java.io.IOException;

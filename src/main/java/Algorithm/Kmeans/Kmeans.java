@@ -1,4 +1,4 @@
-package Algorithm.modelo.Kmeans;
+package Algorithm.Kmeans;
 
 import Algorithm.Algorithm;
 import Algorithm.distance.Distance;

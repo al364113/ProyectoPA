@@ -1,7 +1,7 @@
-package Algorithm.vista;
+package javafx.vista;
 
-import Algorithm.controlador.ControladorInterfaceForVista;
-import Algorithm.modelo.ModeloInterfaceForVista;
+import javafx.controlador.ControladorInterfaceForVista;
+import javafx.modelo.ModeloInterfaceForVista;
 import Excepciones.DifferentFieldNumberInRawException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -63,7 +63,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
             try {
                 controlador.creaGrafica();
             } catch (IOException | DifferentFieldNumberInRawException e) {
-                e.printStackTrace(); //TODO
+                e.printStackTrace();
             }
         });
 

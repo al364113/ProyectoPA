@@ -1,4 +1,4 @@
-package Algorithm.controlador;
+package javafx.controlador;
 
 import Excepciones.DifferentFieldNumberInRawException;
 

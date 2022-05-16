@@ -1,6 +1,6 @@
 package Kmeans;
 
-import Algorithm.modelo.Kmeans.Kmeans;
+import Algorithm.Kmeans.Kmeans;
 import Algorithm.distance.Distance;
 import Algorithm.distance.DistanceType;
 import Algorithm.factory.DistanceFactory;

@@ -1,4 +1,4 @@
-package Algorithm.vista;
+package javafx.vista;
 
 public interface VistaInterfaceForControlador {
 

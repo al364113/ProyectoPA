@@ -1,4 +1,4 @@
-package Algorithm.modelo;
+package javafx.modelo;
 
 import Excepciones.DifferentFieldNumberInRawException;
 

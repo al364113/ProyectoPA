@@ -1,6 +1,6 @@
 package RegresionLineal;
 
-import Algorithm.modelo.RegresionLineal.RegresionLineal;
+import Algorithm.RegresionLineal.RegresionLineal;
 import Excepciones.DifferentFieldNumberInRawException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
