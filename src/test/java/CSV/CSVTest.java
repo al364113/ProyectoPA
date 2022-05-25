@@ -1,6 +1,5 @@
 package CSV;
 
-import CSV.*;
 import Excepciones.DifferentFieldNumberInRawException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

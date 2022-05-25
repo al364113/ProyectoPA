@@ -1,10 +1,8 @@
 package Excepciones;
 
 import CSV.CSV;
-import CSV.Row;
 import CSV.Table;
 import CSV.TableWithLabels;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,6 @@
 package javafx.controlador;
 
+import Excepciones.NullPointException;
 import javafx.modelo.ModeloInterfaceForControlador;
 import javafx.vista.VistaInterfaceForControlador;
 import Excepciones.DifferentFieldNumberInRawException;
@@ -42,15 +43,42 @@ public class Controlador implements ControladorInterfaceForVista {
 
     @Override
     public void estimateLine() {
-        modelo.nuevoPunto(cadenaADouble(vista.getPunto()));
+
+        try {
+            List<Double> coordenadas = cadenaADouble(vista.getPunto());
+            if (esPuntoValido(coordenadas)){
+                modelo.nuevoPunto(coordenadas);
+            }else{
+                System.out.println("Punto no valido.");
+            }
+        }catch (NullPointException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
-    private List<Double> cadenaADouble(String punto){
-        List<Double> lista = new ArrayList<>();
-        for(String coord: punto.split(",")){
-            lista.add(new Double(coord));
+    private boolean esPuntoValido(List<Double> coordenadas){
+        boolean valido = true;
+        for(Double d: coordenadas){
+            if (d < 0){
+                valido = false;
+                break;
+            }
         }
-        return lista;
+        return valido;
+    }
+
+    private List<Double> cadenaADouble(String punto) throws NullPointException{
+
+        try {
+            List<Double> lista = new ArrayList<>();
+            for (String coord : punto.split(",")) {
+                lista.add(new Double(coord));
+            }
+            return lista;
+        }catch (NumberFormatException e){
+            throw new NullPointException();
+        }
     }
 }
 
