@@ -24,19 +24,19 @@ import java.util.List;
 
 public class Vista implements VistaInterfaceForControlador, VistaInterfaceForModelo {
     private ControladorInterfaceForVista controlador;
-    protected ModeloInterfaceForVista modelo;
+    private ModeloInterfaceForVista modelo;
     private final Stage stage;
     final FileChooser fileChooser = new FileChooser();
     private Label label;
     private TextField textField;
-    private ComboBox<FXCollections> comboPosGraficX;
-    private ComboBox<FXCollections> comboPosGraficY;
-    private ComboBox<FXCollections> comboDistancias;
-    private ScatterChart<NumberAxis,NumberAxis> scatter;
+    private ComboBox comboPosGraficX;
+    private ComboBox comboPosGraficY;
+    private ComboBox comboDistancias;
+    private ScatterChart scatter;
     private NumberAxis xAxis;
     private NumberAxis yAxis;
-    private ObservableList<FXCollections> posGraficY;
-    private ObservableList<FXCollections> posGraficX;
+    private ObservableList posGraficY;
+    private ObservableList posGraficX;
     private  List<String> etiquetas;
     private boolean boolY =false;
     private boolean boolX =false;
@@ -68,7 +68,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         });
 
         ObservableList distancias = FXCollections.observableArrayList("EUCLIDEAN", "MANHATTAN");
-        comboDistancias = new ComboBox<FXCollections>(distancias);
+        comboDistancias = new ComboBox<>(distancias);
         comboDistancias.setDisable(true);
         comboDistancias.setOnAction(actionEvent -> controlador.cambioDistancias());
         comboDistancias.getSelectionModel().selectFirst();
@@ -197,7 +197,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
 
     private void anyadePunto(Double coord1, Double coord2){
-        XYChart.Series<NumberAxis,NumberAxis> series4 = new XYChart.Series<>();
+        XYChart.Series series4 = new XYChart.Series();
         series4.setName("Punto-nuevo");
         series4.getData().setAll(new XYChart.Data(coord1, coord2));
         scatter.getData().set(3,series4);
@@ -210,17 +210,17 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
     private void montaEjes (List<List<Double>> datos, List<String> etiquetas){
 
-        XYChart.Series<NumberAxis,NumberAxis> series1 = new XYChart.Series<>();
+        XYChart.Series series1 = new XYChart.Series();
         series1.setName("Iris-setosa");
 
 
-        XYChart.Series<NumberAxis,NumberAxis> series2 = new XYChart.Series<>();
+        XYChart.Series series2 = new XYChart.Series();
         series2.setName("Iris-versicolor");
 
-        XYChart.Series<NumberAxis,NumberAxis> series3 = new XYChart.Series<>();
+        XYChart.Series series3 = new XYChart.Series();
         series3.setName("Iris-virginica");
 
-        XYChart.Series<NumberAxis,NumberAxis> series4 = new XYChart.Series<>();
+        XYChart.Series series4 = new XYChart.Series();
         series4.setName("Punto-nuevo");
 
         for (int i =0; i<datos.get(0).size(); i++) {
