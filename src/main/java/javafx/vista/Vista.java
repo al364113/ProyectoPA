@@ -29,14 +29,14 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     final FileChooser fileChooser = new FileChooser();
     private Label label;
     private TextField textField;
-    private ComboBox comboPosGraficX;
-    private ComboBox comboPosGraficY;
-    private ComboBox comboDistancias;
-    private ScatterChart scatter;
+    private ComboBox<FXCollections> comboPosGraficX;
+    private ComboBox<FXCollections> comboPosGraficY;
+    private ComboBox<FXCollections> comboDistancias;
+    private ScatterChart<NumberAxis,NumberAxis> scatter;
     private NumberAxis xAxis;
     private NumberAxis yAxis;
-    private ObservableList posGraficY;
-    private ObservableList posGraficX;
+    private ObservableList<FXCollections> posGraficY;
+    private ObservableList<FXCollections> posGraficX;
     private  List<String> etiquetas;
     private boolean boolY =false;
     private boolean boolX =false;
@@ -68,7 +68,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         });
 
         ObservableList distancias = FXCollections.observableArrayList("EUCLIDEAN", "MANHATTAN");
-        comboDistancias = new ComboBox<>(distancias);
+        comboDistancias = new ComboBox<FXCollections>(distancias);
         comboDistancias.setDisable(true);
         comboDistancias.setOnAction(actionEvent -> controlador.cambioDistancias());
         comboDistancias.getSelectionModel().selectFirst();
@@ -226,12 +226,16 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
         series4.setName("Punto-nuevo");
 
         for (int i =0; i<datos.get(0).size(); i++) {
-            if (etiquetas.get(i).equals("Iris-setosa")) {
-                series1.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
-            } else if (etiquetas.get(i).equals("Iris-versicolor")) {
-                series2.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
-            } else if (etiquetas.get(i).equals("Iris-virginica")) {
-                series3.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
+            switch (etiquetas.get(i)) {
+                case "Iris-setosa":
+                    series1.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
+                    break;
+                case "Iris-versicolor":
+                    series2.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
+                    break;
+                case "Iris-virginica":
+                    series3.getData().add(new XYChart.Data(datos.get(0).get(i), datos.get(1).get(i)));
+                    break;
             }
         }
         scatter.getData().setAll(series1,series2,series3, series4);

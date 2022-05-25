@@ -2,6 +2,7 @@ CSV/RowWithLabel.class
 javafx/modelo/ModeloInterfaceForVista.class
 Algorithm/RegresionLineal/RegresionLineal.class
 Algorithm/Algorithm.class
+Excepciones/NullPointException.class
 CSV/Table.class
 Algorithm/Kmeans/Kmeans.class
 CSV/TableWithLabels.class

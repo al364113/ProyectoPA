@@ -49,8 +49,8 @@ public class Table {
         return filas;
     }
 
-    public ArrayList getHeaders(){
-        return (ArrayList) headers;
+    public ArrayList<String> getHeaders(){
+        return (ArrayList<String>) headers;
     }
 
 }
