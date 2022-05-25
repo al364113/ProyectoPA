@@ -24,7 +24,7 @@ import java.util.List;
 
 public class Vista implements VistaInterfaceForControlador, VistaInterfaceForModelo {
     private ControladorInterfaceForVista controlador;
-    private ModeloInterfaceForVista modelo;
+    protected ModeloInterfaceForVista modelo;
     private final Stage stage;
     final FileChooser fileChooser = new FileChooser();
     private Label label;
@@ -35,8 +35,8 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
     private ScatterChart scatter;
     private NumberAxis xAxis;
     private NumberAxis yAxis;
-    private ObservableList posGraficY;
-    private ObservableList posGraficX;
+    private ObservableList<String> posGraficY;
+    private ObservableList<String> posGraficX;
     private  List<String> etiquetas;
     private boolean boolY =false;
     private boolean boolX =false;
@@ -67,7 +67,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
             }
         });
 
-        ObservableList distancias = FXCollections.observableArrayList("EUCLIDEAN", "MANHATTAN");
+        ObservableList<String> distancias = FXCollections.observableArrayList("EUCLIDEAN", "MANHATTAN");
         comboDistancias = new ComboBox<>(distancias);
         comboDistancias.setDisable(true);
         comboDistancias.setOnAction(actionEvent -> controlador.cambioDistancias());
@@ -197,7 +197,7 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
 
     private void anyadePunto(Double coord1, Double coord2){
-        XYChart.Series series4 = new XYChart.Series();
+        XYChart.Series<NumberAxis,NumberAxis> series4 = new XYChart.Series<>();
         series4.setName("Punto-nuevo");
         series4.getData().setAll(new XYChart.Data(coord1, coord2));
         scatter.getData().set(3,series4);
@@ -210,17 +210,17 @@ public class Vista implements VistaInterfaceForControlador, VistaInterfaceForMod
 
     private void montaEjes (List<List<Double>> datos, List<String> etiquetas){
 
-        XYChart.Series series1 = new XYChart.Series();
+        XYChart.Series<NumberAxis, NumberAxis> series1 = new XYChart.Series<>();
         series1.setName("Iris-setosa");
 
 
-        XYChart.Series series2 = new XYChart.Series();
+        XYChart.Series<NumberAxis, NumberAxis> series2 = new XYChart.Series<>();
         series2.setName("Iris-versicolor");
 
-        XYChart.Series series3 = new XYChart.Series();
+        XYChart.Series<NumberAxis, NumberAxis> series3 = new XYChart.Series<>();
         series3.setName("Iris-virginica");
 
-        XYChart.Series series4 = new XYChart.Series();
+        XYChart.Series<NumberAxis, NumberAxis> series4 = new XYChart.Series<>();
         series4.setName("Punto-nuevo");
 
         for (int i =0; i<datos.get(0).size(); i++) {
