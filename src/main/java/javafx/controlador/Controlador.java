@@ -59,11 +59,16 @@ public class Controlador implements ControladorInterfaceForVista {
 
     private boolean esPuntoValido(List<Double> coordenadas){
         boolean valido = true;
+        int cont = 0;
         for(Double d: coordenadas){
             if (d < 0){
                 valido = false;
                 break;
             }
+            cont++;
+        }
+        if(cont != 4){
+            valido = false;
         }
         return valido;
     }
